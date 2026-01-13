@@ -8,6 +8,9 @@ class RFIDHandler: NSObject, FatScaleBluetoothManager {
     private var eventSink: FlutterEventSink?
     private var scannedPeripherals: [String: CBPeripheral] = [:]
     private var pendingConnectionUUID: String?
+
+    //Cache lưu EPC đã quét (Tương tự HashSet bên Android)
+    private var scannedEpcSet = Set<String>()
     
     // Singleton SDK
     private var manager: RFIDBlutoothManager? {
@@ -28,6 +31,12 @@ class RFIDHandler: NSObject, FatScaleBluetoothManager {
     }
     
     // MARK: - Logic Methods (Called by Plugin)
+
+    // Hàm xóa Cache
+    func clearData() {
+        print("🔵 iOS SDK: Clearing EPC Cache")
+        scannedEpcSet.removeAll()
+    }
     
     func startDiscovery() {
         print("🔵 iOS SDK: Start Discovery")
@@ -153,24 +162,76 @@ class RFIDHandler: NSObject, FatScaleBluetoothManager {
     // 4. Nhận dữ liệu thẻ (Main)
     func receiveData(withBLEDataSource dataSource: NSMutableArray?, allCount: Int, countArr: NSMutableArray?, dataSource1: NSMutableArray?, countArr1: NSMutableArray?, dataSource2: NSMutableArray?, countArr2: NSMutableArray?) {
         
+        // dataSource chứa danh sách EPC (NSArray)
+        // dataSource2 chứa danh sách RSSI (NSArray)
         guard let epcList = dataSource as? [String] else { return }
         let rssiList = dataSource2 as? [String] ?? []
         
-        for (index, epc) in epcList.enumerated() {
-            var rssi = "-100"
-            if index < rssiList.count {
-                rssi = rssiList[index]
+        // Mảng chứa các thẻ MỚI và DUY NHẤT trong đợt quét này
+        var batchTags = [[String: Any]]()
+        
+        for (index, rawEpc) in epcList.enumerated() {
+            // 1. CLEANING STRING (Giống Android)
+            var cleanEpc = rawEpc
+            
+            // Logic: Nếu bắt đầu bằng "3000" và dài >= 28 ký tự
+            if cleanEpc.count >= 28 && cleanEpc.hasPrefix("3000") {
+                cleanEpc = String(cleanEpc.dropFirst(4))
             }
-            sendEvent(["type": "tag", "epc": epc, "rssi": rssi])
+            // Chuẩn hóa
+            cleanEpc = cleanEpc.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+            
+            // 2. FILTER UNIQUE (Lọc trùng)
+            // .insert trả về (inserted: Bool, memberAfterInsert: String)
+            // Nếu inserted == true nghĩa là thẻ này chưa từng có trong Set -> Xử lý
+            if !cleanEpc.isEmpty && scannedEpcSet.insert(cleanEpc).inserted {
+                
+                // Lấy RSSI tương ứng (hoặc mặc định -100)
+                var rssi = "-100"
+                if index < rssiList.count {
+                    rssi = rssiList[index]
+                }
+                
+                // Đóng gói vào Batch
+                let tagMap: [String: Any] = [
+                    "epc": cleanEpc,
+                    "rssi": rssi,
+                    "tid": "",  // iOS SDK hiện tại chưa trả TID ở callback này
+                    "user": ""
+                ]
+                batchTags.append(tagMap)
+            }
+        }
+        
+        // 3. GỬI BATCH (Nếu có thẻ mới)
+        if !batchTags.isEmpty {
+            sendEvent([
+                "type": "batch_tags",
+                "data": batchTags
+            ])
         }
     }
     
     // 5. Fallback nhận data
     func receiveData(with parseModel: Any?, dataSource: NSMutableArray?) {
         if let list = dataSource as? [String] {
-             for epc in list {
-                 sendEvent(["type": "tag", "epc": epc, "rssi": "-100"])
-             }
+            var batchTags = [[String: Any]]()
+            
+            for rawEpc in list {
+                var cleanEpc = rawEpc
+                if cleanEpc.count >= 28 && cleanEpc.hasPrefix("3000") {
+                    cleanEpc = String(cleanEpc.dropFirst(4))
+                }
+                cleanEpc = cleanEpc.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+                if !cleanEpc.isEmpty && scannedEpcSet.insert(cleanEpc).inserted {
+                    batchTags.append(["epc": cleanEpc, "rssi": "-100"])
+                }
+            }
+            
+            if !batchTags.isEmpty {
+                sendEvent(["type": "batch_tags", "data": batchTags])
+            }
         }
     }
 

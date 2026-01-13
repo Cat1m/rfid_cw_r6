@@ -19,6 +19,16 @@ class RfidServiceIOS implements IRfidService {
 
       try {
         switch (type) {
+          // Xử lý Batch Tags từ iOS
+          case 'batch_tags':
+            final List<dynamic> rawList = map['data'] as List<dynamic>;
+            final List<RFIDTag> tags = rawList.map((item) {
+              // Parse Map thành Model.
+              // Lưu ý: iOS Native đã clean chuỗi & lọc trùng rồi.
+              return _mapNativeTagToModel(item as Map<dynamic, dynamic>);
+            }).toList();
+            return RfidBatchTagsDiscovered(tags);
+
           case 'tag':
             // Xử lý Tag (Đã chuẩn hóa logic cắt chuỗi)
             return RfidTagDiscovered(_processTagData(map));
@@ -54,6 +64,19 @@ class RfidServiceIOS implements IRfidService {
         return RfidErrorEvent("iOS Parse Error ($type): $e");
       }
     });
+  }
+
+  RFIDTag _mapNativeTagToModel(Map<dynamic, dynamic> map) {
+    // RSSI từ iOS gửi lên vẫn là String, cần parse
+    int rssi = int.tryParse(map['rssi']?.toString() ?? '') ?? -100;
+
+    return RFIDTag(
+      epc: map['epc'], // Đã clean ở Swift
+      rssi: rssi, // Đã parse int
+      count: 1,
+      tid: map['tid'],
+      userData: map['user'],
+    );
   }
 
   // --- LOGIC XỬ LÝ TAG (Copy chuẩn từ Android qua) ---
@@ -141,9 +164,9 @@ class RfidServiceIOS implements IRfidService {
         false;
   }
 
+  // Implement clearData
   @override
-  Future<void> clearData() {
-    // TODO: implement clearData
-    throw UnimplementedError();
+  Future<void> clearData() async {
+    await _methodChannel.invokeMethod('clearData');
   }
 }

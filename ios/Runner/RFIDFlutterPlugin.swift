@@ -74,7 +74,7 @@ class RFIDFlutterPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
                 handler.setBuzzer(enable: enable)
                 result(true)
             } else {
-                 result(FlutterError(code: "INVALID_ARG", message: "Enable (bool) required", details: nil))
+                result(FlutterError(code: "INVALID_ARG", message: "Enable (bool) required", details: nil))
             }
             
         case Constants.CMD_SET_CW:
@@ -84,7 +84,11 @@ class RFIDFlutterPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
             } else {
                 result(true)
             }
-            
+
+        case Constants.CMD_CLEAR_DATA:
+            handler.clearData()
+            result(true)
+
         default:
             result(FlutterMethodNotImplemented)
         }
