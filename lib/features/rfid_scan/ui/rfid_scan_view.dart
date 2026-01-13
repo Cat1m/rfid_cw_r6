@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import '../logic/rfid_scan_controller.dart';
-import '../../../scan_screen.dart';
 
-// Import các Widgets con
+// Giả định các widgets này đã tồn tại như bạn yêu cầu
 import 'widgets/rfid_status_bar.dart';
 import 'widgets/rfid_control_panel.dart';
 import 'widgets/rfid_tag_list.dart';
@@ -13,87 +13,252 @@ class RfidScanView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Watch Controller để rebuild khi state thay đổi
-    final controller = context.watch<RfidScanController>();
-    final isConnected = controller.connectionStatus == 'connected';
-
+    // Không dùng context.watch ở đây để tránh rebuild toàn bộ Scaffold khi đọc thẻ
     return Scaffold(
       appBar: AppBar(
         title: const Text('R6 Controller'),
         elevation: 2,
         actions: [
-          // Nút ngắt kết nối
-          if (isConnected)
-            IconButton(
-              tooltip: "Ngắt kết nối",
-              icon: const Icon(Icons.bluetooth_disabled, color: Colors.red),
-              onPressed: controller.disconnect,
-            ),
-          // Nút xóa danh sách
+          // Selector chỉ rebuild nút ngắt kết nối khi trạng thái thay đổi
+          Selector<RfidScanController, String>(
+            selector: (_, ctrl) => ctrl.connectionStatus,
+            builder: (context, status, _) {
+              if (status == 'connected') {
+                return IconButton(
+                  tooltip: "Ngắt kết nối",
+                  icon: const Icon(Icons.bluetooth_disabled, color: Colors.red),
+                  onPressed: () =>
+                      context.read<RfidScanController>().disconnect(),
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          ),
           IconButton(
             tooltip: "Xóa dữ liệu",
             icon: const Icon(Icons.delete_outline),
-            onPressed: controller.clearTags,
+            onPressed: () => context.read<RfidScanController>().clearTags(),
           ),
         ],
       ),
       body: Column(
         children: [
-          // --- PANEL ĐIỀU KHIỂN ---
-          Card(
-            margin: const EdgeInsets.all(12),
-            elevation: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  // 1. Status Bar (Pin, Kết nối)
-                  RfidStatusBar(
-                    batteryLevel: controller.batteryLevel,
-                    connectionStatus: controller.connectionStatus,
-                    onConnectPressed: () async {
-                      // Logic điều hướng UI nằm ở View
-                      final mac = await Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => const ScanScreen()),
-                      );
-                      if (mac != null) {
-                        controller.connect(mac);
-                      }
-                    },
-                  ),
+          // --- 1. PANEL ĐIỀU KHIỂN ---
+          // Dùng Consumer để chỉ rebuild vùng này khi cấu hình thay đổi
+          Consumer<RfidScanController>(
+            builder: (context, controller, child) {
+              final isConnected = controller.connectionStatus == 'connected';
 
-                  const Divider(),
+              return Card(
+                margin: const EdgeInsets.all(12),
+                elevation: 3,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      // Status Bar (Pin, Kết nối)
+                      RfidStatusBar(
+                        batteryLevel: controller.batteryLevel,
+                        connectionStatus: controller.connectionStatus,
+                        onConnectPressed: () {
+                          // Mở BottomSheet tìm thiết bị
+                          _showDeviceListBottomSheet(context, controller);
+                        },
+                      ),
+                      const Divider(),
 
-                  // 2. Control Panel (Power, RSSI, Buzzer)
-                  RfidControlPanel(
-                    isConnected: isConnected,
-                    currentPower: controller.currentPower,
-                    minRssi: controller.minRssiFilter,
-                    // Binding Action từ View về Controller
-                    onPowerChanged: (val) => controller.setPower(val),
-                    onRssiChanged: (val) => controller.setRssiFilter(val),
-                    onBuzzerChanged: (enable) =>
-                        controller.setHardwareBuzzer(enable),
+                      // Control Panel (Power, RSSI, Buzzer)
+                      // Disable các control này nếu chưa kết nối
+                      IgnorePointer(
+                        ignoring: !isConnected,
+                        child: Opacity(
+                          opacity: isConnected ? 1.0 : 0.5,
+                          child: RfidControlPanel(
+                            isConnected: isConnected,
+                            currentPower: controller.currentPower,
+                            minRssi: controller.minRssiFilter,
+                            onPowerChanged: (val) => controller.setPower(val),
+                            onRssiChanged: (val) =>
+                                controller.setRssiFilter(val),
+                            onBuzzerChanged: (enable) =>
+                                controller.setHardwareBuzzer(enable),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
 
-          // --- DANH SÁCH THẺ ---
-          Expanded(child: RfidTagList(tags: controller.tags)),
+          // --- 2. DANH SÁCH THẺ RFID ---
+          // Selector cực quan trọng: Chỉ rebuild list khi biến tags thay đổi
+          Expanded(
+            child: Selector<RfidScanController, List<dynamic>>(
+              // Lưu ý: List<dynamic> để trick generic, thực tế là List<RFIDTag>
+              selector: (_, ctrl) => ctrl.tags,
+              builder: (context, tags, _) {
+                // Ép kiểu lại cho đúng
+                return RfidTagList(tags: tags as dynamic);
+              },
+            ),
+          ),
         ],
       ),
 
-      // --- NÚT QUÉT ---
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: controller.isScanning ? Colors.red : Colors.blue,
-        // Disable nút nếu chưa kết nối
-        onPressed: isConnected ? controller.toggleScan : null,
-        icon: Icon(controller.isScanning ? Icons.stop : Icons.wifi_tethering),
-        label: Text(controller.isScanning ? "DỪNG (STOP)" : "QUÉT (RFID)"),
+      // --- 3. NÚT QUÉT (INVENTORY) ---
+      floatingActionButton: Consumer<RfidScanController>(
+        builder: (context, controller, child) {
+          final isConnected = controller.connectionStatus == 'connected';
+          final isScanning = controller.isInventorying;
+
+          return FloatingActionButton.extended(
+            backgroundColor: isScanning ? Colors.red : Colors.blue,
+            // Nếu chưa kết nối thì disable nút
+            onPressed: isConnected ? controller.toggleInventory : null,
+            icon: Icon(
+              isScanning ? Icons.stop : Icons.wifi_tethering,
+              color: Colors.white,
+            ),
+            label: Text(
+              isScanning ? "DỪNG (STOP)" : "QUÉT (RFID)",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          );
+        },
       ),
     );
+  }
+
+  // --- HELPER: HIỆN DANH SÁCH BLUETOOTH ---
+  void _showDeviceListBottomSheet(
+    BuildContext context,
+    RfidScanController controller,
+  ) {
+    // 1. Start Scan ngay lập tức
+    controller.startDeviceScan();
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent, // Để bo góc đẹp hơn
+      builder: (ctx) {
+        // [FIX] Dùng Provider.value để truyền controller vào context của BottomSheet
+        return ChangeNotifierProvider.value(
+          value: controller,
+          child: DraggableScrollableSheet(
+            initialChildSize: 0.6,
+            minChildSize: 0.4,
+            maxChildSize: 0.9,
+            builder: (context, scrollController) {
+              return Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                ),
+                child: Consumer<RfidScanController>(
+                  builder: (context, ctrl, _) {
+                    return Column(
+                      children: [
+                        // Header
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                "Chọn thiết bị R6",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              if (ctrl.isDeviceScanning)
+                                const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
+                                )
+                              else
+                                IconButton(
+                                  icon: const Icon(Icons.refresh),
+                                  onPressed: ctrl.startDeviceScan,
+                                ),
+                            ],
+                          ),
+                        ),
+                        const Divider(height: 1),
+
+                        // List Devices
+                        Expanded(
+                          child: ctrl.scanResults.isEmpty
+                              ? Center(
+                                  child: Text(
+                                    ctrl.isDeviceScanning
+                                        ? "Đang tìm thiết bị..."
+                                        : "Không tìm thấy thiết bị nào.",
+                                    style: const TextStyle(color: Colors.grey),
+                                  ),
+                                )
+                              : ListView.separated(
+                                  controller:
+                                      scrollController, // [QUAN TRỌNG] Để kéo thả
+                                  itemCount: ctrl.scanResults.length,
+                                  separatorBuilder: (_, __) =>
+                                      const Divider(height: 1),
+                                  itemBuilder: (context, index) {
+                                    final result = ctrl.scanResults[index];
+                                    final device = result.device;
+
+                                    // [FIX] Xử lý tên thiết bị an toàn hơn
+                                    final name = device.platformName.isNotEmpty
+                                        ? device.platformName
+                                        : "N/A (${device.remoteId.str})";
+
+                                    return ListTile(
+                                      leading: const Icon(
+                                        Icons.bluetooth_audio,
+                                        size: 30,
+                                      ),
+                                      title: Text(
+                                        name,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      subtitle: Text(
+                                        "${device.remoteId.str}\nRSSI: ${result.rssi} dBm",
+                                      ),
+                                      trailing: const Icon(Icons.chevron_right),
+                                      onTap: () {
+                                        // 2. Kết nối và đóng sheet
+                                        ctrl.connect(result);
+                                        if (Navigator.canPop(context)) {
+                                          Navigator.pop(context);
+                                        }
+                                      },
+                                    );
+                                  },
+                                ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        );
+      },
+    ).whenComplete(() {
+      // 3. Luôn dừng quét Bluetooth khi đóng BottomSheet để tiết kiệm pin
+      controller.stopDeviceScan();
+    });
   }
 }

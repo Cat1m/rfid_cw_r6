@@ -1,0 +1,6 @@
+framework module MyRFID_ios {
+  umbrella header "MyRFID_ios.h"
+
+  export *
+  module * { export * }
+}

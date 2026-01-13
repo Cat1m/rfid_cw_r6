@@ -26,3 +26,19 @@ class RfidErrorEvent extends RfidEvent {
   final String message;
   RfidErrorEvent(this.message);
 }
+
+class RfidBatteryEvent extends RfidEvent {
+  final int level;
+  RfidBatteryEvent(this.level);
+}
+
+class RfidPowerEvent extends RfidEvent {
+  final int level;
+  RfidPowerEvent(this.level);
+}
+
+// Sự kiện khi người dùng bóp cò cứng trên thiết bị
+class RfidTriggerEvent extends RfidEvent {
+  // Vì e6 data rỗng, ta chỉ cần biết là có tác động
+  RfidTriggerEvent();
+}

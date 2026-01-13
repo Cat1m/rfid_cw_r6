@@ -7,16 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052B15232F15FC100016AC07 /* BluetoothUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B15222F15FC100016AC07 /* BluetoothUtil.m */; };
+		052B15262F15FC370016AC07 /* AppHelper 2.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B15252F15FC370016AC07 /* AppHelper 2.m */; };
+		05A43A742F15E3AD007EF0AE /* RFIDBlutoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A712F15E3AD007EF0AE /* RFIDBlutoothManager.m */; };
+		05A43A752F15E3AD007EF0AE /* BLEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A6E2F15E3AD007EF0AE /* BLEModel.m */; };
+		05A43A772F15E71B007EF0AE /* RFIDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A762F15E719007EF0AE /* RFIDHandler.swift */; };
+		05A43A792F15EB54007EF0AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A782F15EB53007EF0AE /* Constants.swift */; };
+		05A43A7B2F15EB5C007EF0AE /* RFIDFlutterPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A7A2F15EB5B007EF0AE /* RFIDFlutterPlugin.swift */; };
+		05A43BB02F15F7D6007EF0AE /* libRFID_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A43BAF2F15F7D6007EF0AE /* libRFID_iOS.a */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		2DD7DD807DAABDF6AB2C6FE8 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81276A916EBBA39DE87FB1DC /* Pods_Runner.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
+		78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 78A3181F2AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		ABE7C7C139ABA8E0E5DBB59C /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D652037BE5EE0CACD1934C /* Pods_RunnerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		05A43B8F2F15F417007EF0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A43B272F15F417007EF0AE /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E46E48BA0E1992FA9966DAE15A3C8EBD;
+			remoteInfo = IQKeyboardManager;
+		};
+		05A43B912F15F417007EF0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A43B272F15F417007EF0AE /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA09611511D71D0658FEC141C9E59DC7;
+			remoteInfo = Masonry;
+		};
+		05A43B932F15F417007EF0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A43B272F15F417007EF0AE /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EC7746FF647A957FE725DFBC596E6C51;
+			remoteInfo = MBProgressHUD;
+		};
+		05A43B952F15F417007EF0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A43B272F15F417007EF0AE /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 90F6C7764B296FD00828CB55A29023EE;
+			remoteInfo = "Pods-RFID_ios";
+		};
+		05A43B9A2F15F417007EF0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A43B7B2F15F417007EF0AE /* RFID_ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA88F93E2091A67800AE525C;
+			remoteInfo = RFID_ios;
+		};
+		05A43B9C2F15F417007EF0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A43B7B2F15F417007EF0AE /* RFID_ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA88F9562091A67800AE525C;
+			remoteInfo = RFID_iosTests;
+		};
+		05A43B9E2F15F417007EF0AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A43B7B2F15F417007EF0AE /* RFID_ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA88F9612091A67900AE525C;
+			remoteInfo = RFID_iosUITests;
+		};
 		331C8085294A63A400263BE5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
@@ -26,28 +86,270 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		052B151E2F15FBF20016AC07 /* AppHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		052B15222F15FC100016AC07 /* BluetoothUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BluetoothUtil.m; sourceTree = "<group>"; };
+		052B15242F15FC290016AC07 /* BluetoothUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BluetoothUtil.h; sourceTree = "<group>"; };
+		052B15252F15FC370016AC07 /* AppHelper 2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppHelper 2.m"; sourceTree = "<group>"; };
+		05A43A6D2F15E3AD007EF0AE /* BLEModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEModel.h; sourceTree = "<group>"; };
+		05A43A6E2F15E3AD007EF0AE /* BLEModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEModel.m; sourceTree = "<group>"; };
+		05A43A6F2F15E3AD007EF0AE /* MyRFID_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyRFID_ios.framework; sourceTree = "<group>"; };
+		05A43A702F15E3AD007EF0AE /* RFIDBlutoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFIDBlutoothManager.h; sourceTree = "<group>"; };
+		05A43A712F15E3AD007EF0AE /* RFIDBlutoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFIDBlutoothManager.m; sourceTree = "<group>"; };
+		05A43A762F15E719007EF0AE /* RFIDHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFIDHandler.swift; sourceTree = "<group>"; };
+		05A43A782F15EB53007EF0AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		05A43A7A2F15EB5B007EF0AE /* RFIDFlutterPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFIDFlutterPlugin.swift; sourceTree = "<group>"; };
+		05A43A7E2F15F417007EF0AE /* IQBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
+		05A43A7F2F15F417007EF0AE /* IQKeyboardManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		05A43A802F15F417007EF0AE /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		05A43A812F15F417007EF0AE /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		05A43A822F15F417007EF0AE /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		05A43A832F15F417007EF0AE /* IQNSArray+Sort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		05A43A842F15F417007EF0AE /* IQTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		05A43A852F15F417007EF0AE /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		05A43A862F15F417007EF0AE /* IQToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		05A43A872F15F417007EF0AE /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
+		05A43A882F15F417007EF0AE /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		05A43A892F15F417007EF0AE /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		05A43A8A2F15F417007EF0AE /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		05A43A8B2F15F417007EF0AE /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		05A43A8C2F15F417007EF0AE /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		05A43A8D2F15F417007EF0AE /* KeyboardManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		05A43A8F2F15F417007EF0AE /* MASCompositeConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		05A43A902F15F417007EF0AE /* MASConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		05A43A912F15F417007EF0AE /* MASConstraint+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		05A43A922F15F417007EF0AE /* MASConstraintMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		05A43A932F15F417007EF0AE /* MASLayoutConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		05A43A942F15F417007EF0AE /* Masonry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		05A43A952F15F417007EF0AE /* MASUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		05A43A962F15F417007EF0AE /* MASViewAttribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		05A43A972F15F417007EF0AE /* MASViewConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		05A43A982F15F417007EF0AE /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43A992F15F417007EF0AE /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		05A43A9A2F15F417007EF0AE /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		05A43A9B2F15F417007EF0AE /* View+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43A9C2F15F417007EF0AE /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		05A43A9D2F15F417007EF0AE /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43A9F2F15F417007EF0AE /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		05A43AA22F15F417007EF0AE /* IQBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
+		05A43AA32F15F417007EF0AE /* IQKeyboardManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		05A43AA42F15F417007EF0AE /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		05A43AA52F15F417007EF0AE /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		05A43AA62F15F417007EF0AE /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		05A43AA72F15F417007EF0AE /* IQNSArray+Sort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		05A43AA82F15F417007EF0AE /* IQTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		05A43AA92F15F417007EF0AE /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		05A43AAA2F15F417007EF0AE /* IQToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		05A43AAB2F15F417007EF0AE /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
+		05A43AAC2F15F417007EF0AE /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		05A43AAD2F15F417007EF0AE /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		05A43AAE2F15F417007EF0AE /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		05A43AAF2F15F417007EF0AE /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		05A43AB02F15F417007EF0AE /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		05A43AB12F15F417007EF0AE /* KeyboardManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		05A43AB32F15F417007EF0AE /* MASCompositeConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		05A43AB42F15F417007EF0AE /* MASConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		05A43AB52F15F417007EF0AE /* MASConstraint+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		05A43AB62F15F417007EF0AE /* MASConstraintMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		05A43AB72F15F417007EF0AE /* MASLayoutConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		05A43AB82F15F417007EF0AE /* Masonry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		05A43AB92F15F417007EF0AE /* MASUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		05A43ABA2F15F417007EF0AE /* MASViewAttribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		05A43ABB2F15F417007EF0AE /* MASViewConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		05A43ABC2F15F417007EF0AE /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43ABD2F15F417007EF0AE /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		05A43ABE2F15F417007EF0AE /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		05A43ABF2F15F417007EF0AE /* View+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43AC02F15F417007EF0AE /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		05A43AC12F15F417007EF0AE /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43AC32F15F417007EF0AE /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		05A43AC72F15F417007EF0AE /* IQNSArray+Sort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		05A43AC82F15F417007EF0AE /* IQNSArray+Sort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
+		05A43AC92F15F417007EF0AE /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
+		05A43ACA2F15F417007EF0AE /* IQUIScrollView+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IQUIScrollView+Additions.m"; sourceTree = "<group>"; };
+		05A43ACB2F15F417007EF0AE /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		05A43ACC2F15F417007EF0AE /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
+		05A43ACD2F15F417007EF0AE /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		05A43ACE2F15F417007EF0AE /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
+		05A43ACF2F15F417007EF0AE /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		05A43AD02F15F417007EF0AE /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IQUIViewController+Additions.m"; sourceTree = "<group>"; };
+		05A43AD12F15F417007EF0AE /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		05A43AD22F15F417007EF0AE /* IQUIWindow+Hierarchy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IQUIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		05A43AD42F15F417007EF0AE /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		05A43AD52F15F417007EF0AE /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		05A43AD72F15F417007EF0AE /* IQTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		05A43AD82F15F417007EF0AE /* IQTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
+		05A43ADA2F15F417007EF0AE /* IQBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
+		05A43ADB2F15F417007EF0AE /* IQBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQBarButtonItem.m; sourceTree = "<group>"; };
+		05A43ADC2F15F417007EF0AE /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		05A43ADD2F15F417007EF0AE /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		05A43ADE2F15F417007EF0AE /* IQToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		05A43ADF2F15F417007EF0AE /* IQToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
+		05A43AE02F15F417007EF0AE /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		05A43AE12F15F417007EF0AE /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		05A43AE32F15F417007EF0AE /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		05A43AE52F15F417007EF0AE /* IQKeyboardManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		05A43AE62F15F417007EF0AE /* IQKeyboardManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
+		05A43AE72F15F417007EF0AE /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		05A43AE82F15F417007EF0AE /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
+		05A43AE92F15F417007EF0AE /* KeyboardManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		05A43AEB2F15F417007EF0AE /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		05A43AEC2F15F417007EF0AE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		05A43AEF2F15F417007EF0AE /* MASCompositeConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		05A43AF02F15F417007EF0AE /* MASCompositeConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		05A43AF12F15F417007EF0AE /* MASConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		05A43AF22F15F417007EF0AE /* MASConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		05A43AF32F15F417007EF0AE /* MASConstraint+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		05A43AF42F15F417007EF0AE /* MASConstraintMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		05A43AF52F15F417007EF0AE /* MASConstraintMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		05A43AF62F15F417007EF0AE /* MASLayoutConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		05A43AF72F15F417007EF0AE /* MASLayoutConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		05A43AF82F15F417007EF0AE /* Masonry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		05A43AF92F15F417007EF0AE /* MASUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		05A43AFA2F15F417007EF0AE /* MASViewAttribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		05A43AFB2F15F417007EF0AE /* MASViewAttribute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		05A43AFC2F15F417007EF0AE /* MASViewConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		05A43AFD2F15F417007EF0AE /* MASViewConstraint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		05A43AFE2F15F417007EF0AE /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43AFF2F15F417007EF0AE /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		05A43B002F15F417007EF0AE /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		05A43B012F15F417007EF0AE /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		05A43B022F15F417007EF0AE /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		05A43B032F15F417007EF0AE /* View+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43B042F15F417007EF0AE /* View+MASAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		05A43B052F15F417007EF0AE /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		05A43B062F15F417007EF0AE /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		05A43B072F15F417007EF0AE /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		05A43B092F15F417007EF0AE /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		05A43B0A2F15F417007EF0AE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		05A43B0C2F15F417007EF0AE /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		05A43B0D2F15F417007EF0AE /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		05A43B0E2F15F417007EF0AE /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		05A43B0F2F15F417007EF0AE /* README.mdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		05A43B112F15F417007EF0AE /* IQKeyboardManager.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = IQKeyboardManager.xcconfig; sourceTree = "<group>"; };
+		05A43B122F15F417007EF0AE /* IQKeyboardManager-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IQKeyboardManager-dummy.m"; sourceTree = "<group>"; };
+		05A43B132F15F417007EF0AE /* IQKeyboardManager-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManager-prefix.pch"; sourceTree = "<group>"; };
+		05A43B152F15F417007EF0AE /* Masonry.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
+		05A43B162F15F417007EF0AE /* Masonry-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
+		05A43B172F15F417007EF0AE /* Masonry-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
+		05A43B192F15F417007EF0AE /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
+		05A43B1A2F15F417007EF0AE /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		05A43B1B2F15F417007EF0AE /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		05A43B1D2F15F417007EF0AE /* Pods-RFID_ios-acknowledgements.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Pods-RFID_ios-acknowledgements.markdown"; sourceTree = "<group>"; };
+		05A43B1E2F15F417007EF0AE /* Pods-RFID_ios-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pods-RFID_ios-acknowledgements.plist"; sourceTree = "<group>"; };
+		05A43B1F2F15F417007EF0AE /* Pods-RFID_ios-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Pods-RFID_ios-dummy.m"; sourceTree = "<group>"; };
+		05A43B202F15F417007EF0AE /* Pods-RFID_ios-frameworks.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "Pods-RFID_ios-frameworks.sh"; sourceTree = "<group>"; };
+		05A43B212F15F417007EF0AE /* Pods-RFID_ios-resources.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "Pods-RFID_ios-resources.sh"; sourceTree = "<group>"; };
+		05A43B222F15F417007EF0AE /* Pods-RFID_ios.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Pods-RFID_ios.debug.xcconfig"; sourceTree = "<group>"; };
+		05A43B232F15F417007EF0AE /* Pods-RFID_ios.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Pods-RFID_ios.release.xcconfig"; sourceTree = "<group>"; };
+		05A43B262F15F417007EF0AE /* Manifest.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Manifest.lock; sourceTree = "<group>"; };
+		05A43B272F15F417007EF0AE /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Pods.xcodeproj; sourceTree = "<group>"; };
+		05A43B292F15F417007EF0AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		05A43B2A2F15F417007EF0AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		05A43B2B2F15F417007EF0AE /* AppHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		05A43B2C2F15F417007EF0AE /* AppHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		05A43B2D2F15F417007EF0AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		05A43B2E2F15F417007EF0AE /* BLEModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEModel.h; sourceTree = "<group>"; };
+		05A43B2F2F15F417007EF0AE /* BLEModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEModel.m; sourceTree = "<group>"; };
+		05A43B302F15F417007EF0AE /* BluetoothUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BluetoothUtil.h; sourceTree = "<group>"; };
+		05A43B312F15F417007EF0AE /* BluetoothUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BluetoothUtil.m; sourceTree = "<group>"; };
+		05A43B322F15F417007EF0AE /* BSprogreUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSprogreUtil.h; sourceTree = "<group>"; };
+		05A43B332F15F417007EF0AE /* BSprogreUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSprogreUtil.m; sourceTree = "<group>"; };
+		05A43B342F15F417007EF0AE /* ChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseView.h; sourceTree = "<group>"; };
+		05A43B352F15F417007EF0AE /* ChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseView.m; sourceTree = "<group>"; };
+		05A43B362F15F417007EF0AE /* CustomNaviAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomNaviAlertView.h; sourceTree = "<group>"; };
+		05A43B372F15F417007EF0AE /* CustomNaviAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNaviAlertView.m; sourceTree = "<group>"; };
+		05A43B382F15F417007EF0AE /* DestroyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DestroyView.h; sourceTree = "<group>"; };
+		05A43B392F15F417007EF0AE /* DestroyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DestroyView.m; sourceTree = "<group>"; };
+		05A43B3A2F15F417007EF0AE /* EncryptionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncryptionView.h; sourceTree = "<group>"; };
+		05A43B3B2F15F417007EF0AE /* EncryptionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EncryptionView.m; sourceTree = "<group>"; };
+		05A43B3C2F15F417007EF0AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/hello.strings; sourceTree = "<group>"; };
+		05A43B3D2F15F417007EF0AE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/hello.strings"; sourceTree = "<group>"; };
+		05A43B3F2F15F417007EF0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05A43B402F15F417007EF0AE /* InternationalControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InternationalControl.h; sourceTree = "<group>"; };
+		05A43B412F15F417007EF0AE /* InternationalControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InternationalControl.m; sourceTree = "<group>"; };
+		05A43B422F15F417007EF0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		05A43B432F15F417007EF0AE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		05A43B452F15F417007EF0AE /* LockChooseeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockChooseeView.h; sourceTree = "<group>"; };
+		05A43B462F15F417007EF0AE /* LockChooseeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LockChooseeView.m; sourceTree = "<group>"; };
+		05A43B472F15F417007EF0AE /* LockView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockView.h; sourceTree = "<group>"; };
+		05A43B482F15F417007EF0AE /* LockView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LockView.m; sourceTree = "<group>"; };
+		05A43B492F15F417007EF0AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		05A43B4A2F15F417007EF0AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		05A43B4B2F15F417007EF0AE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		05A43B4D2F15F417007EF0AE /* QRcodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRcodeView.h; sourceTree = "<group>"; };
+		05A43B4E2F15F417007EF0AE /* QRcodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRcodeView.m; sourceTree = "<group>"; };
+		05A43B4F2F15F417007EF0AE /* QRcodeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRcodeViewCell.h; sourceTree = "<group>"; };
+		05A43B502F15F417007EF0AE /* QRcodeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRcodeViewCell.m; sourceTree = "<group>"; };
+		05A43B512F15F417007EF0AE /* Reader.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = Reader.bin; sourceTree = "<group>"; };
+		05A43B522F15F417007EF0AE /* Reader_v2_0_4.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = Reader_v2_0_4.bin; sourceTree = "<group>"; };
+		05A43B532F15F417007EF0AE /* ReadMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadMessageView.h; sourceTree = "<group>"; };
+		05A43B542F15F417007EF0AE /* ReadMessageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadMessageView.m; sourceTree = "<group>"; };
+		05A43B552F15F417007EF0AE /* RFIDBlutoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFIDBlutoothManager.h; sourceTree = "<group>"; };
+		05A43B562F15F417007EF0AE /* RFIDBlutoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFIDBlutoothManager.m; sourceTree = "<group>"; };
+		05A43B572F15F417007EF0AE /* ScanTwoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanTwoView.h; sourceTree = "<group>"; };
+		05A43B582F15F417007EF0AE /* ScanTwoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanTwoView.m; sourceTree = "<group>"; };
+		05A43B592F15F417007EF0AE /* ScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanView.h; sourceTree = "<group>"; };
+		05A43B5A2F15F417007EF0AE /* ScanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanView.m; sourceTree = "<group>"; };
+		05A43B5B2F15F417007EF0AE /* ScanViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanViewCell.h; sourceTree = "<group>"; };
+		05A43B5C2F15F417007EF0AE /* ScanViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanViewCell.m; sourceTree = "<group>"; };
+		05A43B5D2F15F417007EF0AE /* SettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		05A43B5E2F15F417007EF0AE /* SettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
+		05A43B5F2F15F417007EF0AE /* ShadeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShadeCell.h; sourceTree = "<group>"; };
+		05A43B602F15F417007EF0AE /* ShadeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShadeCell.m; sourceTree = "<group>"; };
+		05A43B612F15F417007EF0AE /* TopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopView.h; sourceTree = "<group>"; };
+		05A43B622F15F417007EF0AE /* TopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopView.m; sourceTree = "<group>"; };
+		05A43B632F15F417007EF0AE /* UpgradeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpgradeView.h; sourceTree = "<group>"; };
+		05A43B642F15F417007EF0AE /* UpgradeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpgradeView.m; sourceTree = "<group>"; };
+		05A43B652F15F417007EF0AE /* USERView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USERView.h; sourceTree = "<group>"; };
+		05A43B662F15F417007EF0AE /* USERView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USERView.m; sourceTree = "<group>"; };
+		05A43B672F15F417007EF0AE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		05A43B682F15F417007EF0AE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		05A43B692F15F417007EF0AE /* WriteMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteMessageView.h; sourceTree = "<group>"; };
+		05A43B6A2F15F417007EF0AE /* WriteMessageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WriteMessageView.m; sourceTree = "<group>"; };
+		05A43B6B2F15F417007EF0AE /* 苍蝇拍 V2.02 .bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "苍蝇拍 V2.02 .bin"; sourceTree = "<group>"; };
+		05A43B6D2F15F417007EF0AE /* BLEModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEModel.h; sourceTree = "<group>"; };
+		05A43B6E2F15F417007EF0AE /* BLEModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEModel.m; sourceTree = "<group>"; };
+		05A43B6F2F15F417007EF0AE /* MyRFID_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyRFID_ios.framework; sourceTree = "<group>"; };
+		05A43B702F15F417007EF0AE /* RFIDBlutoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFIDBlutoothManager.h; sourceTree = "<group>"; };
+		05A43B712F15F417007EF0AE /* RFIDBlutoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFIDBlutoothManager.m; sourceTree = "<group>"; };
+		05A43B732F15F417007EF0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05A43B742F15F417007EF0AE /* RFID_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFID_iosTests.m; sourceTree = "<group>"; };
+		05A43B762F15F417007EF0AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05A43B772F15F417007EF0AE /* RFID_iosUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFID_iosUITests.m; sourceTree = "<group>"; };
+		05A43B792F15F417007EF0AE /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		05A43B7A2F15F417007EF0AE /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
+		05A43B7B2F15F417007EF0AE /* RFID_ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RFID_ios.xcodeproj; sourceTree = "<group>"; };
+		05A43B7C2F15F417007EF0AE /* RFID_ios.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = RFID_ios.xcworkspace; sourceTree = "<group>"; };
+		05A43B7E2F15F417007EF0AE /* BLEModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEModel.h; sourceTree = "<group>"; };
+		05A43B7F2F15F417007EF0AE /* BLEModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEModel.m; sourceTree = "<group>"; };
+		05A43B802F15F417007EF0AE /* MyRFID_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyRFID_ios.framework; sourceTree = "<group>"; };
+		05A43B812F15F417007EF0AE /* RFIDBlutoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFIDBlutoothManager.h; sourceTree = "<group>"; };
+		05A43B822F15F417007EF0AE /* RFIDBlutoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFIDBlutoothManager.m; sourceTree = "<group>"; };
+		05A43B842F15F417007EF0AE /* SDK使用说明CH-EN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SDK使用说明CH-EN.h"; sourceTree = "<group>"; };
+		05A43BA12F15F5CB007EF0AE /* BLEModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEModel.h; sourceTree = "<group>"; };
+		05A43BA22F15F5CB007EF0AE /* BLEModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEModel.m; sourceTree = "<group>"; };
+		05A43BA32F15F5CB007EF0AE /* MyRFID_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyRFID_ios.framework; sourceTree = "<group>"; };
+		05A43BA42F15F5CB007EF0AE /* RFIDBlutoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFIDBlutoothManager.h; sourceTree = "<group>"; };
+		05A43BA52F15F5CB007EF0AE /* RFIDBlutoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFIDBlutoothManager.m; sourceTree = "<group>"; };
+		05A43BA82F15F61F007EF0AE /* BLEModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEModel.h; sourceTree = "<group>"; };
+		05A43BA92F15F61F007EF0AE /* BLEModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEModel.m; sourceTree = "<group>"; };
+		05A43BAA2F15F61F007EF0AE /* MyRFID_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyRFID_ios.framework; sourceTree = "<group>"; };
+		05A43BAB2F15F61F007EF0AE /* RFIDBlutoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFIDBlutoothManager.h; sourceTree = "<group>"; };
+		05A43BAC2F15F61F007EF0AE /* RFIDBlutoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFIDBlutoothManager.m; sourceTree = "<group>"; };
+		05A43BAF2F15F7D6007EF0AE /* libRFID_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRFID_iOS.a; path = Runner/RFID_IOS_SDK/MyRFID_ios.framework/libRFID_iOS.a; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
+		1B8E742D5AB068256FB74F42 /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
+		30D652037BE5EE0CACD1934C /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		78E0A7A72DC9AD7400C4905E /* FlutterGeneratedPluginSwiftPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FlutterGeneratedPluginSwiftPackage; path = Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
+		81276A916EBBA39DE87FB1DC /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,19 +357,608 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A06CC7B179319D3367555C36 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
+		A64155C6F8BD6D5C922C4B80 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A97A0E153741FE734B5FE6D5 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		C0830BC5E4ED27E65985F5F6 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		DFC905422AB58C8E7324F0D4 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		56677E86323740DD1ECD95AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABE7C7C139ABA8E0E5DBB59C /* Pods_RunnerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97C146EB1CF9000F007C117D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A43BB02F15F7D6007EF0AE /* libRFID_iOS.a in Frameworks */,
+				78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */,
+				2DD7DD807DAABDF6AB2C6FE8 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0413EB10F5BCAF9DF20CEA9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05A43BAF2F15F7D6007EF0AE /* libRFID_iOS.a */,
+				05A43BA62F15F5CB007EF0AE /* RFID_IOS_SDK */,
+				05A43BAD2F15F61F007EF0AE /* RFID_IOS_SDK */,
+				05A43B862F15F417007EF0AE /* RFID_IOS */,
+				81276A916EBBA39DE87FB1DC /* Pods_Runner.framework */,
+				30D652037BE5EE0CACD1934C /* Pods_RunnerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		05A43A722F15E3AD007EF0AE /* RFID_IOS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				05A43A6D2F15E3AD007EF0AE /* BLEModel.h */,
+				05A43A6E2F15E3AD007EF0AE /* BLEModel.m */,
+				05A43A6F2F15E3AD007EF0AE /* MyRFID_ios.framework */,
+				05A43A702F15E3AD007EF0AE /* RFIDBlutoothManager.h */,
+				05A43A712F15E3AD007EF0AE /* RFIDBlutoothManager.m */,
+				052B151E2F15FBF20016AC07 /* AppHelper.h */,
+				052B15222F15FC100016AC07 /* BluetoothUtil.m */,
+				052B15242F15FC290016AC07 /* BluetoothUtil.h */,
+				052B15252F15FC370016AC07 /* AppHelper 2.m */,
+			);
+			path = RFID_IOS_SDK;
+			sourceTree = "<group>";
+		};
+		05A43A8E2F15F417007EF0AE /* IQKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				05A43A7E2F15F417007EF0AE /* IQBarButtonItem.h */,
+				05A43A7F2F15F417007EF0AE /* IQKeyboardManager.h */,
+				05A43A802F15F417007EF0AE /* IQKeyboardManagerConstants.h */,
+				05A43A812F15F417007EF0AE /* IQKeyboardManagerConstantsInternal.h */,
+				05A43A822F15F417007EF0AE /* IQKeyboardReturnKeyHandler.h */,
+				05A43A832F15F417007EF0AE /* IQNSArray+Sort.h */,
+				05A43A842F15F417007EF0AE /* IQTextView.h */,
+				05A43A852F15F417007EF0AE /* IQTitleBarButtonItem.h */,
+				05A43A862F15F417007EF0AE /* IQToolbar.h */,
+				05A43A872F15F417007EF0AE /* IQUIScrollView+Additions.h */,
+				05A43A882F15F417007EF0AE /* IQUITextFieldView+Additions.h */,
+				05A43A892F15F417007EF0AE /* IQUIView+Hierarchy.h */,
+				05A43A8A2F15F417007EF0AE /* IQUIView+IQKeyboardToolbar.h */,
+				05A43A8B2F15F417007EF0AE /* IQUIViewController+Additions.h */,
+				05A43A8C2F15F417007EF0AE /* IQUIWindow+Hierarchy.h */,
+				05A43A8D2F15F417007EF0AE /* KeyboardManager.h */,
+			);
+			path = IQKeyboardManager;
+			sourceTree = "<group>";
+		};
+		05A43A9E2F15F417007EF0AE /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				05A43A8F2F15F417007EF0AE /* MASCompositeConstraint.h */,
+				05A43A902F15F417007EF0AE /* MASConstraint.h */,
+				05A43A912F15F417007EF0AE /* MASConstraint+Private.h */,
+				05A43A922F15F417007EF0AE /* MASConstraintMaker.h */,
+				05A43A932F15F417007EF0AE /* MASLayoutConstraint.h */,
+				05A43A942F15F417007EF0AE /* Masonry.h */,
+				05A43A952F15F417007EF0AE /* MASUtilities.h */,
+				05A43A962F15F417007EF0AE /* MASViewAttribute.h */,
+				05A43A972F15F417007EF0AE /* MASViewConstraint.h */,
+				05A43A982F15F417007EF0AE /* NSArray+MASAdditions.h */,
+				05A43A992F15F417007EF0AE /* NSArray+MASShorthandAdditions.h */,
+				05A43A9A2F15F417007EF0AE /* NSLayoutConstraint+MASDebugAdditions.h */,
+				05A43A9B2F15F417007EF0AE /* View+MASAdditions.h */,
+				05A43A9C2F15F417007EF0AE /* View+MASShorthandAdditions.h */,
+				05A43A9D2F15F417007EF0AE /* ViewController+MASAdditions.h */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		05A43AA02F15F417007EF0AE /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				05A43A9F2F15F417007EF0AE /* MBProgressHUD.h */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		05A43AA12F15F417007EF0AE /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				05A43A8E2F15F417007EF0AE /* IQKeyboardManager */,
+				05A43A9E2F15F417007EF0AE /* Masonry */,
+				05A43AA02F15F417007EF0AE /* MBProgressHUD */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		05A43AB22F15F417007EF0AE /* IQKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AA22F15F417007EF0AE /* IQBarButtonItem.h */,
+				05A43AA32F15F417007EF0AE /* IQKeyboardManager.h */,
+				05A43AA42F15F417007EF0AE /* IQKeyboardManagerConstants.h */,
+				05A43AA52F15F417007EF0AE /* IQKeyboardManagerConstantsInternal.h */,
+				05A43AA62F15F417007EF0AE /* IQKeyboardReturnKeyHandler.h */,
+				05A43AA72F15F417007EF0AE /* IQNSArray+Sort.h */,
+				05A43AA82F15F417007EF0AE /* IQTextView.h */,
+				05A43AA92F15F417007EF0AE /* IQTitleBarButtonItem.h */,
+				05A43AAA2F15F417007EF0AE /* IQToolbar.h */,
+				05A43AAB2F15F417007EF0AE /* IQUIScrollView+Additions.h */,
+				05A43AAC2F15F417007EF0AE /* IQUITextFieldView+Additions.h */,
+				05A43AAD2F15F417007EF0AE /* IQUIView+Hierarchy.h */,
+				05A43AAE2F15F417007EF0AE /* IQUIView+IQKeyboardToolbar.h */,
+				05A43AAF2F15F417007EF0AE /* IQUIViewController+Additions.h */,
+				05A43AB02F15F417007EF0AE /* IQUIWindow+Hierarchy.h */,
+				05A43AB12F15F417007EF0AE /* KeyboardManager.h */,
+			);
+			path = IQKeyboardManager;
+			sourceTree = "<group>";
+		};
+		05A43AC22F15F417007EF0AE /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AB32F15F417007EF0AE /* MASCompositeConstraint.h */,
+				05A43AB42F15F417007EF0AE /* MASConstraint.h */,
+				05A43AB52F15F417007EF0AE /* MASConstraint+Private.h */,
+				05A43AB62F15F417007EF0AE /* MASConstraintMaker.h */,
+				05A43AB72F15F417007EF0AE /* MASLayoutConstraint.h */,
+				05A43AB82F15F417007EF0AE /* Masonry.h */,
+				05A43AB92F15F417007EF0AE /* MASUtilities.h */,
+				05A43ABA2F15F417007EF0AE /* MASViewAttribute.h */,
+				05A43ABB2F15F417007EF0AE /* MASViewConstraint.h */,
+				05A43ABC2F15F417007EF0AE /* NSArray+MASAdditions.h */,
+				05A43ABD2F15F417007EF0AE /* NSArray+MASShorthandAdditions.h */,
+				05A43ABE2F15F417007EF0AE /* NSLayoutConstraint+MASDebugAdditions.h */,
+				05A43ABF2F15F417007EF0AE /* View+MASAdditions.h */,
+				05A43AC02F15F417007EF0AE /* View+MASShorthandAdditions.h */,
+				05A43AC12F15F417007EF0AE /* ViewController+MASAdditions.h */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		05A43AC42F15F417007EF0AE /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AC32F15F417007EF0AE /* MBProgressHUD.h */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		05A43AC52F15F417007EF0AE /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AB22F15F417007EF0AE /* IQKeyboardManager */,
+				05A43AC22F15F417007EF0AE /* Masonry */,
+				05A43AC42F15F417007EF0AE /* MBProgressHUD */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		05A43AC62F15F417007EF0AE /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AA12F15F417007EF0AE /* Private */,
+				05A43AC52F15F417007EF0AE /* Public */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		05A43AD32F15F417007EF0AE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AC72F15F417007EF0AE /* IQNSArray+Sort.h */,
+				05A43AC82F15F417007EF0AE /* IQNSArray+Sort.m */,
+				05A43AC92F15F417007EF0AE /* IQUIScrollView+Additions.h */,
+				05A43ACA2F15F417007EF0AE /* IQUIScrollView+Additions.m */,
+				05A43ACB2F15F417007EF0AE /* IQUITextFieldView+Additions.h */,
+				05A43ACC2F15F417007EF0AE /* IQUITextFieldView+Additions.m */,
+				05A43ACD2F15F417007EF0AE /* IQUIView+Hierarchy.h */,
+				05A43ACE2F15F417007EF0AE /* IQUIView+Hierarchy.m */,
+				05A43ACF2F15F417007EF0AE /* IQUIViewController+Additions.h */,
+				05A43AD02F15F417007EF0AE /* IQUIViewController+Additions.m */,
+				05A43AD12F15F417007EF0AE /* IQUIWindow+Hierarchy.h */,
+				05A43AD22F15F417007EF0AE /* IQUIWindow+Hierarchy.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		05A43AD62F15F417007EF0AE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AD42F15F417007EF0AE /* IQKeyboardManagerConstants.h */,
+				05A43AD52F15F417007EF0AE /* IQKeyboardManagerConstantsInternal.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		05A43AD92F15F417007EF0AE /* IQTextView */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AD72F15F417007EF0AE /* IQTextView.h */,
+				05A43AD82F15F417007EF0AE /* IQTextView.m */,
+			);
+			path = IQTextView;
+			sourceTree = "<group>";
+		};
+		05A43AE22F15F417007EF0AE /* IQToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				05A43ADA2F15F417007EF0AE /* IQBarButtonItem.h */,
+				05A43ADB2F15F417007EF0AE /* IQBarButtonItem.m */,
+				05A43ADC2F15F417007EF0AE /* IQTitleBarButtonItem.h */,
+				05A43ADD2F15F417007EF0AE /* IQTitleBarButtonItem.m */,
+				05A43ADE2F15F417007EF0AE /* IQToolbar.h */,
+				05A43ADF2F15F417007EF0AE /* IQToolbar.m */,
+				05A43AE02F15F417007EF0AE /* IQUIView+IQKeyboardToolbar.h */,
+				05A43AE12F15F417007EF0AE /* IQUIView+IQKeyboardToolbar.m */,
+			);
+			path = IQToolbar;
+			sourceTree = "<group>";
+		};
+		05A43AE42F15F417007EF0AE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AE32F15F417007EF0AE /* IQKeyboardManager.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		05A43AEA2F15F417007EF0AE /* IQKeyBoardManager */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AD32F15F417007EF0AE /* Categories */,
+				05A43AD62F15F417007EF0AE /* Constants */,
+				05A43AD92F15F417007EF0AE /* IQTextView */,
+				05A43AE22F15F417007EF0AE /* IQToolbar */,
+				05A43AE42F15F417007EF0AE /* Resources */,
+				05A43AE52F15F417007EF0AE /* IQKeyboardManager.h */,
+				05A43AE62F15F417007EF0AE /* IQKeyboardManager.m */,
+				05A43AE72F15F417007EF0AE /* IQKeyboardReturnKeyHandler.h */,
+				05A43AE82F15F417007EF0AE /* IQKeyboardReturnKeyHandler.m */,
+				05A43AE92F15F417007EF0AE /* KeyboardManager.h */,
+			);
+			path = IQKeyBoardManager;
+			sourceTree = "<group>";
+		};
+		05A43AED2F15F417007EF0AE /* IQKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AEA2F15F417007EF0AE /* IQKeyBoardManager */,
+				05A43AEB2F15F417007EF0AE /* LICENSE.md */,
+				05A43AEC2F15F417007EF0AE /* README.md */,
+			);
+			path = IQKeyboardManager;
+			sourceTree = "<group>";
+		};
+		05A43AEE2F15F417007EF0AE /* Local Podspecs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Local Podspecs";
+			sourceTree = "<group>";
+		};
+		05A43B082F15F417007EF0AE /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AEF2F15F417007EF0AE /* MASCompositeConstraint.h */,
+				05A43AF02F15F417007EF0AE /* MASCompositeConstraint.m */,
+				05A43AF12F15F417007EF0AE /* MASConstraint.h */,
+				05A43AF22F15F417007EF0AE /* MASConstraint.m */,
+				05A43AF32F15F417007EF0AE /* MASConstraint+Private.h */,
+				05A43AF42F15F417007EF0AE /* MASConstraintMaker.h */,
+				05A43AF52F15F417007EF0AE /* MASConstraintMaker.m */,
+				05A43AF62F15F417007EF0AE /* MASLayoutConstraint.h */,
+				05A43AF72F15F417007EF0AE /* MASLayoutConstraint.m */,
+				05A43AF82F15F417007EF0AE /* Masonry.h */,
+				05A43AF92F15F417007EF0AE /* MASUtilities.h */,
+				05A43AFA2F15F417007EF0AE /* MASViewAttribute.h */,
+				05A43AFB2F15F417007EF0AE /* MASViewAttribute.m */,
+				05A43AFC2F15F417007EF0AE /* MASViewConstraint.h */,
+				05A43AFD2F15F417007EF0AE /* MASViewConstraint.m */,
+				05A43AFE2F15F417007EF0AE /* NSArray+MASAdditions.h */,
+				05A43AFF2F15F417007EF0AE /* NSArray+MASAdditions.m */,
+				05A43B002F15F417007EF0AE /* NSArray+MASShorthandAdditions.h */,
+				05A43B012F15F417007EF0AE /* NSLayoutConstraint+MASDebugAdditions.h */,
+				05A43B022F15F417007EF0AE /* NSLayoutConstraint+MASDebugAdditions.m */,
+				05A43B032F15F417007EF0AE /* View+MASAdditions.h */,
+				05A43B042F15F417007EF0AE /* View+MASAdditions.m */,
+				05A43B052F15F417007EF0AE /* View+MASShorthandAdditions.h */,
+				05A43B062F15F417007EF0AE /* ViewController+MASAdditions.h */,
+				05A43B072F15F417007EF0AE /* ViewController+MASAdditions.m */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		05A43B0B2F15F417007EF0AE /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B082F15F417007EF0AE /* Masonry */,
+				05A43B092F15F417007EF0AE /* LICENSE */,
+				05A43B0A2F15F417007EF0AE /* README.md */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		05A43B102F15F417007EF0AE /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B0C2F15F417007EF0AE /* LICENSE */,
+				05A43B0D2F15F417007EF0AE /* MBProgressHUD.h */,
+				05A43B0E2F15F417007EF0AE /* MBProgressHUD.m */,
+				05A43B0F2F15F417007EF0AE /* README.mdown */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		05A43B142F15F417007EF0AE /* IQKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B112F15F417007EF0AE /* IQKeyboardManager.xcconfig */,
+				05A43B122F15F417007EF0AE /* IQKeyboardManager-dummy.m */,
+				05A43B132F15F417007EF0AE /* IQKeyboardManager-prefix.pch */,
+			);
+			path = IQKeyboardManager;
+			sourceTree = "<group>";
+		};
+		05A43B182F15F417007EF0AE /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B152F15F417007EF0AE /* Masonry.xcconfig */,
+				05A43B162F15F417007EF0AE /* Masonry-dummy.m */,
+				05A43B172F15F417007EF0AE /* Masonry-prefix.pch */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		05A43B1C2F15F417007EF0AE /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B192F15F417007EF0AE /* MBProgressHUD.xcconfig */,
+				05A43B1A2F15F417007EF0AE /* MBProgressHUD-dummy.m */,
+				05A43B1B2F15F417007EF0AE /* MBProgressHUD-prefix.pch */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		05A43B242F15F417007EF0AE /* Pods-RFID_ios */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B1D2F15F417007EF0AE /* Pods-RFID_ios-acknowledgements.markdown */,
+				05A43B1E2F15F417007EF0AE /* Pods-RFID_ios-acknowledgements.plist */,
+				05A43B1F2F15F417007EF0AE /* Pods-RFID_ios-dummy.m */,
+				05A43B202F15F417007EF0AE /* Pods-RFID_ios-frameworks.sh */,
+				05A43B212F15F417007EF0AE /* Pods-RFID_ios-resources.sh */,
+				05A43B222F15F417007EF0AE /* Pods-RFID_ios.debug.xcconfig */,
+				05A43B232F15F417007EF0AE /* Pods-RFID_ios.release.xcconfig */,
+			);
+			path = "Pods-RFID_ios";
+			sourceTree = "<group>";
+		};
+		05A43B252F15F417007EF0AE /* Target Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B142F15F417007EF0AE /* IQKeyboardManager */,
+				05A43B182F15F417007EF0AE /* Masonry */,
+				05A43B1C2F15F417007EF0AE /* MBProgressHUD */,
+				05A43B242F15F417007EF0AE /* Pods-RFID_ios */,
+			);
+			path = "Target Support Files";
+			sourceTree = "<group>";
+		};
+		05A43B282F15F417007EF0AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05A43AC62F15F417007EF0AE /* Headers */,
+				05A43AED2F15F417007EF0AE /* IQKeyboardManager */,
+				05A43AEE2F15F417007EF0AE /* Local Podspecs */,
+				05A43B0B2F15F417007EF0AE /* Masonry */,
+				05A43B102F15F417007EF0AE /* MBProgressHUD */,
+				05A43B252F15F417007EF0AE /* Target Support Files */,
+				05A43B262F15F417007EF0AE /* Manifest.lock */,
+				05A43B272F15F417007EF0AE /* Pods.xcodeproj */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		05A43B6C2F15F417007EF0AE /* RFID_ios */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B292F15F417007EF0AE /* AppDelegate.h */,
+				05A43B2A2F15F417007EF0AE /* AppDelegate.m */,
+				05A43B2B2F15F417007EF0AE /* AppHelper.h */,
+				05A43B2C2F15F417007EF0AE /* AppHelper.m */,
+				05A43B2D2F15F417007EF0AE /* Assets.xcassets */,
+				05A43B2E2F15F417007EF0AE /* BLEModel.h */,
+				05A43B2F2F15F417007EF0AE /* BLEModel.m */,
+				05A43B302F15F417007EF0AE /* BluetoothUtil.h */,
+				05A43B312F15F417007EF0AE /* BluetoothUtil.m */,
+				05A43B322F15F417007EF0AE /* BSprogreUtil.h */,
+				05A43B332F15F417007EF0AE /* BSprogreUtil.m */,
+				05A43B342F15F417007EF0AE /* ChooseView.h */,
+				05A43B352F15F417007EF0AE /* ChooseView.m */,
+				05A43B362F15F417007EF0AE /* CustomNaviAlertView.h */,
+				05A43B372F15F417007EF0AE /* CustomNaviAlertView.m */,
+				05A43B382F15F417007EF0AE /* DestroyView.h */,
+				05A43B392F15F417007EF0AE /* DestroyView.m */,
+				05A43B3A2F15F417007EF0AE /* EncryptionView.h */,
+				05A43B3B2F15F417007EF0AE /* EncryptionView.m */,
+				05A43B3E2F15F417007EF0AE /* hello.strings */,
+				05A43B3F2F15F417007EF0AE /* Info.plist */,
+				05A43B402F15F417007EF0AE /* InternationalControl.h */,
+				05A43B412F15F417007EF0AE /* InternationalControl.m */,
+				05A43B442F15F417007EF0AE /* LaunchScreen.storyboard */,
+				05A43B452F15F417007EF0AE /* LockChooseeView.h */,
+				05A43B462F15F417007EF0AE /* LockChooseeView.m */,
+				05A43B472F15F417007EF0AE /* LockView.h */,
+				05A43B482F15F417007EF0AE /* LockView.m */,
+				05A43B492F15F417007EF0AE /* main.m */,
+				05A43B4C2F15F417007EF0AE /* Main.storyboard */,
+				05A43B4D2F15F417007EF0AE /* QRcodeView.h */,
+				05A43B4E2F15F417007EF0AE /* QRcodeView.m */,
+				05A43B4F2F15F417007EF0AE /* QRcodeViewCell.h */,
+				05A43B502F15F417007EF0AE /* QRcodeViewCell.m */,
+				05A43B512F15F417007EF0AE /* Reader.bin */,
+				05A43B522F15F417007EF0AE /* Reader_v2_0_4.bin */,
+				05A43B532F15F417007EF0AE /* ReadMessageView.h */,
+				05A43B542F15F417007EF0AE /* ReadMessageView.m */,
+				05A43B552F15F417007EF0AE /* RFIDBlutoothManager.h */,
+				05A43B562F15F417007EF0AE /* RFIDBlutoothManager.m */,
+				05A43B572F15F417007EF0AE /* ScanTwoView.h */,
+				05A43B582F15F417007EF0AE /* ScanTwoView.m */,
+				05A43B592F15F417007EF0AE /* ScanView.h */,
+				05A43B5A2F15F417007EF0AE /* ScanView.m */,
+				05A43B5B2F15F417007EF0AE /* ScanViewCell.h */,
+				05A43B5C2F15F417007EF0AE /* ScanViewCell.m */,
+				05A43B5D2F15F417007EF0AE /* SettingView.h */,
+				05A43B5E2F15F417007EF0AE /* SettingView.m */,
+				05A43B5F2F15F417007EF0AE /* ShadeCell.h */,
+				05A43B602F15F417007EF0AE /* ShadeCell.m */,
+				05A43B612F15F417007EF0AE /* TopView.h */,
+				05A43B622F15F417007EF0AE /* TopView.m */,
+				05A43B632F15F417007EF0AE /* UpgradeView.h */,
+				05A43B642F15F417007EF0AE /* UpgradeView.m */,
+				05A43B652F15F417007EF0AE /* USERView.h */,
+				05A43B662F15F417007EF0AE /* USERView.m */,
+				05A43B672F15F417007EF0AE /* ViewController.h */,
+				05A43B682F15F417007EF0AE /* ViewController.m */,
+				05A43B692F15F417007EF0AE /* WriteMessageView.h */,
+				05A43B6A2F15F417007EF0AE /* WriteMessageView.m */,
+				05A43B6B2F15F417007EF0AE /* 苍蝇拍 V2.02 .bin */,
+			);
+			path = RFID_ios;
+			sourceTree = "<group>";
+		};
+		05A43B722F15F417007EF0AE /* RFID_IOS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B6D2F15F417007EF0AE /* BLEModel.h */,
+				05A43B6E2F15F417007EF0AE /* BLEModel.m */,
+				05A43B6F2F15F417007EF0AE /* MyRFID_ios.framework */,
+				05A43B702F15F417007EF0AE /* RFIDBlutoothManager.h */,
+				05A43B712F15F417007EF0AE /* RFIDBlutoothManager.m */,
+			);
+			path = RFID_IOS_SDK;
+			sourceTree = "<group>";
+		};
+		05A43B752F15F417007EF0AE /* RFID_iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B732F15F417007EF0AE /* Info.plist */,
+				05A43B742F15F417007EF0AE /* RFID_iosTests.m */,
+			);
+			path = RFID_iosTests;
+			sourceTree = "<group>";
+		};
+		05A43B782F15F417007EF0AE /* RFID_iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B762F15F417007EF0AE /* Info.plist */,
+				05A43B772F15F417007EF0AE /* RFID_iosUITests.m */,
+			);
+			path = RFID_iosUITests;
+			sourceTree = "<group>";
+		};
+		05A43B7D2F15F417007EF0AE /* RFID_IOS_DEMO */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B282F15F417007EF0AE /* Pods */,
+				05A43B6C2F15F417007EF0AE /* RFID_ios */,
+				05A43B722F15F417007EF0AE /* RFID_IOS_SDK */,
+				05A43B752F15F417007EF0AE /* RFID_iosTests */,
+				05A43B782F15F417007EF0AE /* RFID_iosUITests */,
+				05A43B792F15F417007EF0AE /* Podfile */,
+				05A43B7A2F15F417007EF0AE /* Podfile.lock */,
+				05A43B7B2F15F417007EF0AE /* RFID_ios.xcodeproj */,
+				05A43B7C2F15F417007EF0AE /* RFID_ios.xcworkspace */,
+			);
+			path = RFID_IOS_DEMO;
+			sourceTree = "<group>";
+		};
+		05A43B832F15F417007EF0AE /* RFID_IOS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B7E2F15F417007EF0AE /* BLEModel.h */,
+				05A43B7F2F15F417007EF0AE /* BLEModel.m */,
+				05A43B802F15F417007EF0AE /* MyRFID_ios.framework */,
+				05A43B812F15F417007EF0AE /* RFIDBlutoothManager.h */,
+				05A43B822F15F417007EF0AE /* RFIDBlutoothManager.m */,
+			);
+			path = RFID_IOS_SDK;
+			sourceTree = "<group>";
+		};
+		05A43B852F15F417007EF0AE /* SDK使用说明 */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B842F15F417007EF0AE /* SDK使用说明CH-EN.h */,
+			);
+			path = "SDK使用说明";
+			sourceTree = "<group>";
+		};
+		05A43B862F15F417007EF0AE /* RFID_IOS */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B7D2F15F417007EF0AE /* RFID_IOS_DEMO */,
+				05A43B832F15F417007EF0AE /* RFID_IOS_SDK */,
+				05A43B852F15F417007EF0AE /* SDK使用说明 */,
+			);
+			name = RFID_IOS;
+			path = ../../../flutter_project/RFID_IOS;
+			sourceTree = "<group>";
+		};
+		05A43B872F15F417007EF0AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B9B2F15F417007EF0AE /* RFID_ios.app */,
+				05A43B9D2F15F417007EF0AE /* RFID_iosTests.xctest */,
+				05A43B9F2F15F417007EF0AE /* RFID_iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05A43B892F15F417007EF0AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05A43B902F15F417007EF0AE /* libIQKeyboardManager.a */,
+				05A43B922F15F417007EF0AE /* libMasonry.a */,
+				05A43B942F15F417007EF0AE /* libMBProgressHUD.a */,
+				05A43B962F15F417007EF0AE /* libPods-RFID_ios.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05A43BA62F15F5CB007EF0AE /* RFID_IOS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				05A43BA12F15F5CB007EF0AE /* BLEModel.h */,
+				05A43BA22F15F5CB007EF0AE /* BLEModel.m */,
+				05A43BA32F15F5CB007EF0AE /* MyRFID_ios.framework */,
+				05A43BA42F15F5CB007EF0AE /* RFIDBlutoothManager.h */,
+				05A43BA52F15F5CB007EF0AE /* RFIDBlutoothManager.m */,
+			);
+			name = RFID_IOS_SDK;
+			path = ../../../flutter_project/RFID_IOS/RFID_IOS_SDK;
+			sourceTree = "<group>";
+		};
+		05A43BAD2F15F61F007EF0AE /* RFID_IOS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				05A43BA82F15F61F007EF0AE /* BLEModel.h */,
+				05A43BA92F15F61F007EF0AE /* BLEModel.m */,
+				05A43BAA2F15F61F007EF0AE /* MyRFID_ios.framework */,
+				05A43BAB2F15F61F007EF0AE /* RFIDBlutoothManager.h */,
+				05A43BAC2F15F61F007EF0AE /* RFIDBlutoothManager.m */,
+			);
+			name = RFID_IOS_SDK;
+			path = ../../../flutter_project/RFID_IOS/RFID_IOS_SDK;
+			sourceTree = "<group>";
+		};
 		331C8082294A63A400263BE5 /* RunnerTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,9 +967,23 @@
 			path = RunnerTests;
 			sourceTree = "<group>";
 		};
+		5945A682C1833B8F0ED14172 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A97A0E153741FE734B5FE6D5 /* Pods-Runner.debug.xcconfig */,
+				C0830BC5E4ED27E65985F5F6 /* Pods-Runner.release.xcconfig */,
+				DFC905422AB58C8E7324F0D4 /* Pods-Runner.profile.xcconfig */,
+				A64155C6F8BD6D5C922C4B80 /* Pods-RunnerTests.debug.xcconfig */,
+				1B8E742D5AB068256FB74F42 /* Pods-RunnerTests.release.xcconfig */,
+				A06CC7B179319D3367555C36 /* Pods-RunnerTests.profile.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
+				78E0A7A72DC9AD7400C4905E /* FlutterGeneratedPluginSwiftPackage */,
 				3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */,
 				9740EEB21CF90195004384FC /* Debug.xcconfig */,
 				7AFA3C8E1D35360C0083082E /* Release.xcconfig */,
@@ -94,6 +999,8 @@
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
 				331C8082294A63A400263BE5 /* RunnerTests */,
+				5945A682C1833B8F0ED14172 /* Pods */,
+				0413EB10F5BCAF9DF20CEA9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +1016,9 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				05A43A7A2F15EB5B007EF0AE /* RFIDFlutterPlugin.swift */,
+				05A43A782F15EB53007EF0AE /* Constants.swift */,
+				05A43A762F15E719007EF0AE /* RFIDHandler.swift */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -117,6 +1027,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				05A43A722F15E3AD007EF0AE /* RFID_IOS_SDK */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -128,8 +1039,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 331C8087294A63A400263BE5 /* Build configuration list for PBXNativeTarget "RunnerTests" */;
 			buildPhases = (
+				E1510BF7FADA7CF5A2C1B8CD /* [CP] Check Pods Manifest.lock */,
 				331C807D294A63A400263BE5 /* Sources */,
 				331C807F294A63A400263BE5 /* Resources */,
+				56677E86323740DD1ECD95AD /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,18 +1058,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
+				14A88D1A72CB08C91B9AE3D3 /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
-				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
+				7C76B9F455EE9F5BB0604436 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Runner;
+			packageProductDependencies = (
+				78A3181F2AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage */,
+			);
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
@@ -188,10 +1105,24 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
+			packageReferences = (
+				781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "FlutterGeneratedPluginSwiftPackage" */,
+			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 05A43B892F15F417007EF0AE /* Products */;
+					ProjectRef = 05A43B272F15F417007EF0AE /* Pods.xcodeproj */;
+				},
+				{
+					ProductGroup = 05A43B872F15F417007EF0AE /* Products */;
+					ProjectRef = 05A43B7B2F15F417007EF0AE /* RFID_ios.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
@@ -199,6 +1130,58 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		05A43B902F15F417007EF0AE /* libIQKeyboardManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libIQKeyboardManager.a;
+			remoteRef = 05A43B8F2F15F417007EF0AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		05A43B922F15F417007EF0AE /* libMasonry.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMasonry.a;
+			remoteRef = 05A43B912F15F417007EF0AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		05A43B942F15F417007EF0AE /* libMBProgressHUD.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMBProgressHUD.a;
+			remoteRef = 05A43B932F15F417007EF0AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		05A43B962F15F417007EF0AE /* libPods-RFID_ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-RFID_ios.a";
+			remoteRef = 05A43B952F15F417007EF0AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		05A43B9B2F15F417007EF0AE /* RFID_ios.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = RFID_ios.app;
+			remoteRef = 05A43B9A2F15F417007EF0AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		05A43B9D2F15F417007EF0AE /* RFID_iosTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RFID_iosTests.xctest;
+			remoteRef = 05A43B9C2F15F417007EF0AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		05A43B9F2F15F417007EF0AE /* RFID_iosUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RFID_iosUITests.xctest;
+			remoteRef = 05A43B9E2F15F417007EF0AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		331C807F294A63A400263BE5 /* Resources */ = {
@@ -222,6 +1205,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		14A88D1A72CB08C91B9AE3D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -238,6 +1243,23 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
+		7C76B9F455EE9F5BB0604436 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -252,6 +1274,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+		};
+		E1510BF7FADA7CF5A2C1B8CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RunnerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -268,8 +1312,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A43A772F15E71B007EF0AE /* RFIDHandler.swift in Sources */,
+				052B15262F15FC370016AC07 /* AppHelper 2.m in Sources */,
+				05A43A742F15E3AD007EF0AE /* RFIDBlutoothManager.m in Sources */,
+				05A43A752F15E3AD007EF0AE /* BLEModel.m in Sources */,
+				05A43A7B2F15EB5C007EF0AE /* RFIDFlutterPlugin.swift in Sources */,
+				052B15232F15FC100016AC07 /* BluetoothUtil.m in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				05A43A792F15EB54007EF0AE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +1335,33 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		05A43B3E2F15F417007EF0AE /* hello.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05A43B3C2F15F417007EF0AE /* en */,
+				05A43B3D2F15F417007EF0AE /* zh-Hans */,
+			);
+			name = hello.strings;
+			sourceTree = "<group>";
+		};
+		05A43B442F15F417007EF0AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05A43B422F15F417007EF0AE /* Base */,
+				05A43B432F15F417007EF0AE /* zh-Hans */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		05A43B4C2F15F417007EF0AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05A43B4A2F15F417007EF0AE /* Base */,
+				05A43B4B2F15F417007EF0AE /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -362,11 +1440,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = JW77B5CRQ2;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple.framework/Headers\"",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK/**",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK/MyRFID_ios.framework/Headers",
+				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK/MyRFID_ios.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.rfidDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,6 +1472,7 @@
 		};
 		331C8088294A63A400263BE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A64155C6F8BD6D5C922C4B80 /* Pods-RunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -395,6 +1490,7 @@
 		};
 		331C8089294A63A400263BE5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B8E742D5AB068256FB74F42 /* Pods-RunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -410,6 +1506,7 @@
 		};
 		331C808A294A63A400263BE5 /* Profile */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A06CC7B179319D3367555C36 /* Pods-RunnerTests.profile.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -541,11 +1638,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = JW77B5CRQ2;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple.framework/Headers\"",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK/**",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK/MyRFID_ios.framework/Headers",
+				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK/MyRFID_ios.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.rfidDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -563,11 +1676,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = JW77B5CRQ2;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple.framework/Headers\"",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK/**",
+					"$(SRCROOT)/Runner/RFID_IOS_SDK/MyRFID_ios.framework/Headers",
+				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK/MyRFID_ios.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.rfidDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,6 +1740,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "FlutterGeneratedPluginSwiftPackage" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		78A3181F2AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FlutterGeneratedPluginSwiftPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 97C146E61CF9000F007C117D /* Project object */;
 }
