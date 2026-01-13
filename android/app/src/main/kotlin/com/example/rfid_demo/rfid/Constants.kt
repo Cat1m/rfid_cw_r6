@@ -18,4 +18,5 @@ object Constants {
     const val CMD_GET_BATTERY = "getBattery"
     const val CMD_SET_CW = "setCW"
     const val CMD_SET_BUZZER = "setBuzzer"
+    const val CMD_CLEAR_DATA = "clearData"
 }

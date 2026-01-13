@@ -1,5 +1,7 @@
 // lib/core/rfid_cw_r6/impl/rfid_service_android.dart
 
+import 'dart:developer';
+
 import 'package:flutter/services.dart';
 import 'package:rfid_demo/core/rfid_cw_r6/rfid_event.dart';
 import 'package:rfid_demo/core/rfid_cw_r6/rfid_service_interface.dart';
@@ -17,23 +19,37 @@ class RfidServiceAndroid implements IRfidService {
       final Map<dynamic, dynamic> map = event as Map<dynamic, dynamic>;
       final String type = map['type'];
       switch (type) {
+        // [MỚI] Xử lý Batch Tags từ Native
+        case 'batch_tags':
+          final List<dynamic> rawList = map['data'] as List<dynamic>;
+
+          // Native đã lọc trùng và clean rồi, ta chỉ việc map sang Model
+          final List<RFIDTag> tags = rawList.map((item) {
+            // Lưu ý: Hàm _processTagData dưới đây có thể cần điều chỉnh
+            // nếu Native đã clean chuỗi rồi thì không cần clean lại
+            return _mapNativeTagToModel(item as Map<dynamic, dynamic>);
+          }).toList();
+
+          return RfidBatchTagsDiscovered(tags);
+
         case 'tag':
-          return RfidTagDiscovered(_processTagData(map));
+          return RfidTagDiscovered(_processTagData(map)); // Logic cũ fallback
         case 'status':
           return RfidScanningStatusChanged(map['scanning'] as bool);
         case 'connection_status':
           return RfidConnectionStatusChanged(map['status'] as String);
-        // Android có thể trả về pin/power trực tiếp hoặc qua event khác
-        // Giữ nguyên logic cũ của bạn ở đây
         default:
           return RfidErrorEvent('Unknown event type Android: $type');
       }
     });
   }
 
+  RFIDTag _mapNativeTagToModel(Map<dynamic, dynamic> map) {
+    return RFIDTag.fromMap(map);
+  }
+
   RFIDTag _processTagData(Map<dynamic, dynamic> map) {
     String rawEpc = map['epc'] ?? 'Unknown';
-    // ... Logic cắt chuỗi EPC giữ nguyên ...
     if (rawEpc.length >= 28 && rawEpc.startsWith("3000")) {
       rawEpc = rawEpc.substring(4, 28);
     }
@@ -72,16 +88,35 @@ class RfidServiceAndroid implements IRfidService {
   }
 
   @override
-  Future<void> getPower() async =>
-      await _methodChannel.invokeMethod('getPower');
+  Future<int?> getPower() async {
+    // Sửa thành int?
+    try {
+      final int result = await _methodChannel.invokeMethod('getPower');
+      return result;
+    } catch (e) {
+      return -1;
+    }
+  }
 
   @override
-  Future<void> getBattery() async =>
-      await _methodChannel.invokeMethod('getBattery');
+  Future<int?> getBattery() async {
+    // Sửa thành int?
+    try {
+      final int result = await _methodChannel.invokeMethod('getBattery');
+      return result;
+    } catch (e) {
+      return 0;
+    }
+  }
 
   @override
   Future<bool> setBuzzer(bool enable) async {
     return await _methodChannel.invokeMethod('setBuzzer', {'enable': enable}) ??
         false;
+  }
+
+  @override
+  Future<void> clearData() async {
+    await _methodChannel.invokeMethod('clearData');
   }
 }

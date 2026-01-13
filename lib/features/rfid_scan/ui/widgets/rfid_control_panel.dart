@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 class RfidControlPanel extends StatefulWidget {
   final int currentPower;
-  final double minRssi;
+
   final bool isConnected;
   // Callbacks để báo ngược lại cho Controller
   final Function(int) onPowerChanged;
-  final Function(double) onRssiChanged;
+
   final Function(bool) onBuzzerChanged;
 
   const RfidControlPanel({
     super.key,
     required this.currentPower,
-    required this.minRssi,
+
     required this.isConnected,
     required this.onPowerChanged,
-    required this.onRssiChanged,
+
     required this.onBuzzerChanged,
   });
 
@@ -95,34 +95,6 @@ class _RfidControlPanelState extends State<RfidControlPanel> {
               child: const Text("SET POWER"),
             ),
           ],
-        ),
-
-        const Divider(height: 24),
-
-        // 2. RSSI FILTER
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "Lọc hiển thị (RSSI):",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
-            ),
-            Text(
-              "${widget.minRssi.toInt()} dBm",
-              style: const TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        Slider(
-          value: widget.minRssi,
-          min: -100.0,
-          max: -30.0,
-          divisions: 70,
-          label: "${widget.minRssi.toInt()}",
-          onChanged: widget.onRssiChanged,
         ),
 
         const Divider(height: 24),

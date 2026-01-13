@@ -1,6 +1,5 @@
 // lib/core/rfid_cw_r6/rfid_service_interface.dart
 
-import 'package:flutter/services.dart';
 import 'rfid_event.dart';
 
 abstract class IRfidService {
@@ -11,7 +10,8 @@ abstract class IRfidService {
   Future<void> startScan();
   Future<void> stopScan();
   Future<bool> setPower(int power);
-  Future<void> getPower(); // Đổi thành void vì kết quả trả về qua Stream
-  Future<void> getBattery(); // Đổi thành void vì kết quả trả về qua Stream
+  Future<int?> getPower();
+  Future<int?> getBattery();
   Future<bool> setBuzzer(bool enable);
+  Future<void> clearData();
 }

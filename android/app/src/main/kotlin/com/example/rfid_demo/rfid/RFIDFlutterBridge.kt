@@ -65,6 +65,10 @@ class RFIDFlutterBridge(
                 val enable = call.argument<Boolean>("enable") ?: true
                 result.success(rfidHandler.setBuzzer(enable))
             }
+            Constants.CMD_CLEAR_DATA -> {
+                rfidHandler?.clearCache()
+                result.success(true)
+            }
 
             else -> result.notImplemented()
         }

@@ -1,6 +1,5 @@
-// lib/core/rfid_cw_r6/impl/rfid_service_ios.dart
-
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/services.dart';
 import 'package:rfid_demo/core/rfid_cw_r6/rfid_event.dart';
 import 'package:rfid_demo/core/rfid_cw_r6/rfid_service_interface.dart';
@@ -15,73 +14,81 @@ class RfidServiceIOS implements IRfidService {
   @override
   Stream<RfidEvent> get eventStream {
     return _eventChannel.receiveBroadcastStream().map((event) {
-      // LOG TOÀN BỘ EVENT NHẬN ĐƯỢC ĐỂ DEBUG
-      // print("🎯 iOS Stream Event: $event");
-
       final Map<dynamic, dynamic> map = event as Map<dynamic, dynamic>;
       final String type = map['type'];
 
       try {
         switch (type) {
           case 'tag':
-            // Xử lý an toàn cho Tag
+            // Xử lý Tag (Đã chuẩn hóa logic cắt chuỗi)
             return RfidTagDiscovered(_processTagData(map));
 
           case 'status':
-            final isScanning = map['scanning'] as bool? ?? false;
+            // iOS thường trả về 0/1 hoặc true/false, cần parse cẩn thận
+            final isScanning =
+                map['scanning'].toString() == 'true' ||
+                map['scanning'].toString() == '1';
             return RfidScanningStatusChanged(isScanning);
 
           case 'connection_status':
+            // Map status string cho khớp với Android ("connected", "disconnected")
             return RfidConnectionStatusChanged(map['status'] as String);
 
+          // [QUAN TRỌNG] Nhận dữ liệu Pin từ Stream (Async Response)
           case 'batteryLevel':
             final level = int.tryParse(map['data'].toString()) ?? 0;
             return RfidBatteryEvent(level);
 
+          // [QUAN TRỌNG] Nhận dữ liệu Power từ Stream (Async Response)
           case 'powerLevel':
             final level = int.tryParse(map['data'].toString()) ?? 0;
-            // print("⚡ Power Update: $level");
             return RfidPowerEvent(level);
 
-          case 'trigger': // [MỚI]
+          case 'trigger':
             return RfidTriggerEvent();
 
           default:
-            print("⚠️ iOS Unknown Event: $type");
             return RfidErrorEvent('Unknown iOS event: $type');
         }
-      } catch (e, stack) {
-        print("❌ Error Parsing Event ($type): $e");
-        print(stack);
-        return RfidErrorEvent("Parse Error: $e");
+      } catch (e) {
+        return RfidErrorEvent("iOS Parse Error ($type): $e");
       }
     });
   }
 
+  // --- LOGIC XỬ LÝ TAG (Copy chuẩn từ Android qua) ---
   RFIDTag _processTagData(Map<dynamic, dynamic> map) {
     String rawEpc = map['epc']?.toString() ?? 'Unknown';
     String rawRssi = map['rssi']?.toString() ?? '-100';
+    log(rawEpc);
 
-    // Parse RSSI an toàn (vì iOS có thể trả về string lạ)
-    int rssi = int.tryParse(rawRssi) ?? -100;
+    // 1. Logic cắt chuỗi 3000...CRC
+    if (rawEpc.length >= 28 && rawEpc.startsWith("3000")) {
+      rawEpc = rawEpc.substring(4, 28);
+    }
 
-    // Clean EPC (nếu cần thiết)
-    // Ví dụ: Loại bỏ ký tự thừa nếu SDK gửi kèm
+    // 2. Chuẩn hóa EPC
     final cleanEpc = rawEpc.trim().toUpperCase();
 
-    // Map lại đúng structure cho Model RFIDTag
+    // 3. Parse RSSI sang int (FIX: Sửa ở đây)
+    // iOS trả về RSSI dạng String (ví dụ "-65"), cần parse ra int (-65)
+    final int rssi = int.tryParse(rawRssi) ?? -100;
+
+    // 4. Map vào Model (Giờ rssi đã là int, khớp với Model Equatable)
     return RFIDTag(
       epc: cleanEpc,
-      rssi: rssi,
-      count: 1, // iOS trả về từng thẻ đơn lẻ nên count là 1
+      rssi: rssi, // Truyền int vào
+      count: 1, // iOS trả từng thẻ nên count = 1
     );
   }
 
+  // --- METHODS (Standardized Keys) ---
+
   @override
   Future<bool> connect(String deviceId) async {
-    print("🔌 Connecting to iOS UUID: $deviceId");
+    // Dùng key 'mac' hoặc 'uuid' thống nhất để bên Native dễ hiểu
     final result = await _methodChannel.invokeMethod('connect', {
-      'address': deviceId,
+      'mac': deviceId, // iOS Native sẽ nhận key này là UUID string
     });
     return result ?? false;
   }
@@ -93,40 +100,50 @@ class RfidServiceIOS implements IRfidService {
 
   @override
   Future<void> startScan() async {
-    print("📡 Command: startScan");
     await _methodChannel.invokeMethod('startScan');
   }
 
   @override
   Future<void> stopScan() async {
-    print("🛑 Command: stopScan");
     await _methodChannel.invokeMethod('stopScan');
   }
 
   @override
   Future<bool> setPower(int power) async {
-    print("⚡ Command: setPower $power");
+    // Chuẩn hóa key thành 'power' thay vì 'value'
     final result = await _methodChannel.invokeMethod('setPower', {
-      'value': power,
+      'power': power,
     });
-    // Lưu ý: iOS sẽ không trả về giá trị power mới ngay tại đây
-    // Nó sẽ trả về qua Stream event 'powerLevel' sau khi SDK confirm (case "11")
+    // iOS trả về true nếu gửi lệnh thành công,
+    // còn giá trị power thật sẽ về qua Stream 'powerLevel'
     return result == true;
   }
 
+  // --- ASYNC GETTERS (Trả null ngay, đợi Stream) ---
+
   @override
-  Future<void> getPower() async {
+  Future<int?> getPower() async {
+    // Gửi lệnh đọc -> Native xử lý async
     await _methodChannel.invokeMethod('getPower');
+    // Trả về null để Controller biết là "Hãy đợi tin ở Stream"
+    return null;
   }
 
   @override
-  Future<void> getBattery() async {
+  Future<int?> getBattery() async {
     await _methodChannel.invokeMethod('getBattery');
+    return null;
   }
 
   @override
   Future<bool> setBuzzer(bool enable) async {
     return await _methodChannel.invokeMethod('setBuzzer', {'enable': enable}) ??
         false;
+  }
+
+  @override
+  Future<void> clearData() {
+    // TODO: implement clearData
+    throw UnimplementedError();
   }
 }

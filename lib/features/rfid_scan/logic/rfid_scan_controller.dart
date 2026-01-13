@@ -1,56 +1,52 @@
 import 'dart:async';
-import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart'; // [MỚI] Dùng để quét thiết bị
 import 'package:permission_handler/permission_handler.dart';
+import 'package:rfid_demo/core/rfid_cw_r6/rfid_service_interface.dart';
 import '../../../core/rfid_cw_r6/rfid_cw_r6.dart';
 
 class RfidScanController extends ChangeNotifier {
-  final RFIDService _service;
+  final IRfidService _service;
   final AudioPlayer _audioPlayer = AudioPlayer();
   StreamSubscription? _serviceSubscription;
   StreamSubscription? _scanDeviceSubscription;
 
   // --- STATE RFID ---
-  List<RFIDTag> tags = [];
+  List<RFIDTag> tags = []; // List hiển thị UI
   String connectionStatus = "Disconnected";
-  bool isInventorying = false; // Đổi tên cho rõ nghĩa (Đang đọc thẻ)
+  bool isInventorying = false;
   int batteryLevel = 0;
   int currentPower = 30;
 
   // --- STATE BLUETOOTH SCAN ---
-  List<ScanResult> scanResults = []; // Danh sách thiết bị tìm thấy
-  bool isDeviceScanning = false; // Trạng thái đang tìm thiết bị Bluetooth
+  List<ScanResult> scanResults = [];
+  bool isDeviceScanning = false;
 
   // Config
-  double minRssiFilter = -90.0;
   bool isSoundOn = true;
   DateTime? _lastBeepTime;
   DateTime? _lastTriggerTime;
 
-  RfidScanController({RFIDService? service})
+  RfidScanController({IRfidService? service})
     : _service = service ?? RFIDService();
 
   // --- LIFECYCLE ---
   Future<void> init() async {
     await _audioPlayer.setSource(AssetSource('sounds/beep_sound.mp3'));
-
-    // Yêu cầu quyền
     await [
       Permission.bluetoothScan,
       Permission.bluetoothConnect,
       Permission.location,
     ].request();
 
-    // Lắng nghe Stream Event từ Core Service (Native trả về)
     _serviceSubscription = _service.eventStream.listen(_handleServiceEvent);
-
-    // Lắng nghe trạng thái Scan của FlutterBluePlus
     FlutterBluePlus.isScanning.listen((isScanning) {
       isDeviceScanning = isScanning;
       notifyListeners();
     });
+    // Không cần Timer nữa vì Native đã lọc trùng
   }
 
   @override
@@ -64,14 +60,23 @@ class RfidScanController extends ChangeNotifier {
   // --- XỬ LÝ EVENT TỪ SERVICE (NATIVE) ---
   void _handleServiceEvent(RfidEvent event) {
     switch (event) {
-      case RfidTagDiscovered e:
-        _processTag(e.tag);
+      case RfidBatchTagsDiscovered e:
+        // Vì Native chỉ gửi thẻ mới tinh, ta chỉ việc thêm vào đầu danh sách
+        if (e.tags.isNotEmpty) {
+          tags.insertAll(0, e.tags);
+          _playBeep();
+          notifyListeners(); // Update UI ngay lập tức
+        }
         break;
 
+      case RfidTagDiscovered _:
+        // Logic cũ nếu cần (nhưng nên bỏ để tránh conflict)
+        break;
+
+      // Các case status khác thì notify ngay lập tức vì nó ít xảy ra
       case RfidConnectionStatusChanged e:
         connectionStatus = e.status;
         if (connectionStatus == 'connected') {
-          // Kết nối xong thì dừng quét Bluetooth
           FlutterBluePlus.stopScan();
           _syncDeviceStatus();
         }
@@ -83,53 +88,29 @@ class RfidScanController extends ChangeNotifier {
         notifyListeners();
         break;
 
-      // [MỚI] Xử lý Pin trả về từ Stream (quan trọng cho iOS)
       case RfidBatteryEvent e:
         batteryLevel = e.level;
         notifyListeners();
         break;
 
-      // [MỚI] Xử lý Power trả về từ Stream (quan trọng cho iOS)
       case RfidPowerEvent e:
         currentPower = e.level;
         notifyListeners();
         break;
 
-      case RfidErrorEvent e:
-        debugPrint("RFID Error: ${e.message}");
-        break;
-
-      case RfidTriggerEvent e:
+      case RfidTriggerEvent _:
         _handleHardwareTrigger();
         break;
+
+      default:
+        break;
     }
-  }
-
-  // --- LOGIC XỬ LÝ THẺ ---
-  void _processTag(RFIDTag newTag) {
-    // log(newTag.toString()); // Comment bớt log cho đỡ lag nếu quét nhiều
-    if (newTag.rssi < minRssiFilter) return;
-
-    _playBeep();
-
-    final index = tags.indexWhere((t) => t.epc == newTag.epc);
-    if (index != -1) {
-      tags[index] = tags[index].copyWith(
-        count: tags[index].count + 1,
-        rssi: newTag.rssi,
-      );
-      // Đưa thẻ mới đọc lên đầu danh sách
-      final temp = tags.removeAt(index);
-      tags.insert(0, temp);
-    } else {
-      tags.insert(0, newTag);
-    }
-    notifyListeners();
   }
 
   void _playBeep() {
     if (!isSoundOn) return;
     final now = DateTime.now();
+    // Debounce âm thanh 100ms
     if (_lastBeepTime == null ||
         now.difference(_lastBeepTime!).inMilliseconds > 100) {
       _audioPlayer.play(
@@ -206,22 +187,45 @@ class RfidScanController extends ChangeNotifier {
 
   // Đồng bộ trạng thái Pin/Nguồn
   Future<void> _syncDeviceStatus() async {
-    // Đợi 1 chút để thiết bị ổn định
-    await Future.delayed(const Duration(seconds: 1));
+    // Tăng delay ban đầu để thiết bị ổn định sau khi kết nối
+    await Future.delayed(const Duration(milliseconds: 2500));
 
-    // Gọi lệnh GET, kết quả sẽ trả về qua _handleServiceEvent (Stream)
-    // Không dùng await kết quả int ở đây nữa để support iOS Async
-    _service.getBattery();
-    _service.getPower();
-  }
+    // 1. LẤY PIN (BATTERY)
+    int? bat = await _service.getBattery();
+    // Retry logic: Nếu thất bại, thử lại sau 1s
+    if (bat == null || bat == 0) {
+      await Future.delayed(const Duration(seconds: 1));
+      bat = await _service.getBattery();
+    }
 
-  void clearTags() {
-    tags.clear();
+    if (bat != null && bat > 0) {
+      batteryLevel = bat;
+    }
+
+    // Nghỉ 1 nhịp để tránh nghẽn lệnh Bluetooth
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    // 2. LẤY POWER (FIX: Thêm biến hứng giá trị)
+    int? pow = await _service.getPower(); // <-- SỬA Ở ĐÂY: Hứng giá trị về
+
+    // Retry logic cho Power
+    if (pow == null || pow == -1) {
+      await Future.delayed(const Duration(seconds: 1));
+      pow = await _service.getPower();
+    }
+
+    if (pow != null && pow > 0) {
+      currentPower = pow;
+      // Cập nhật UI (Text Controller nếu cần)
+      // notifyListeners() ở dưới sẽ lo việc hiển thị
+    }
+
     notifyListeners();
   }
 
-  void setRssiFilter(double value) {
-    minRssiFilter = value;
+  void clearTags() {
+    _service.clearData();
+    tags.clear();
     notifyListeners();
   }
 
@@ -240,10 +244,6 @@ class RfidScanController extends ChangeNotifier {
       return;
     }
     _lastTriggerTime = now;
-
-    print(
-      "🔫 Hardware Trigger Detected! Current State: Scanning=$isInventorying",
-    );
 
     // 2. Logic Toggle (Đảo trạng thái)
     if (isInventorying) {

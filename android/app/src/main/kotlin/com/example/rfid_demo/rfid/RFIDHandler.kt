@@ -23,6 +23,9 @@ class RFIDHandler(private val context: Context, private val listener: RFIDListen
     private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private var scanJob: Job? = null
 
+    //Cache lưu các EPC đã quét để lọc trùng tuyệt đối
+    private val scannedEpcCache = HashSet<String>()
+
     init {
         try {
             rfidSDK = RFIDWithUHFBLE.getInstance()
@@ -31,6 +34,13 @@ class RFIDHandler(private val context: Context, private val listener: RFIDListen
             Log.e("RFIDHandler", "Init Error: ${e.message}")
         }
     }
+
+    // [MỚI] Hàm dọn dẹp cache (Gọi khi bấm nút Xóa trên UI)
+    fun clearCache() {
+        scannedEpcCache.clear()
+    }
+
+
 
     // --- HELPER: HÀM BỌC LOGIC AN TOÀN (DRY) ---
     // Đây là function nhận vào 1 function khác (block) để thực thi
@@ -90,22 +100,49 @@ class RFIDHandler(private val context: Context, private val listener: RFIDListen
     }
 
     // Thay thế Thread bằng Coroutine
+    // [REFACTOR] Viết lại hàm này để Lọc trùng + Gom nhóm (Batch)
     private fun startReadingCoroutine() {
-        // Hủy job cũ nếu còn tồn tại
         scanJob?.cancel()
         
         scanJob = scope.launch {
             while (isActive && isScanning) {
-                // Đọc dữ liệu (Hàm này blocking nhẹ)
                 val listTag = rfidSDK?.readTagFromBufferList()
 
                 if (!listTag.isNullOrEmpty()) {
-                    // Xử lý list trả về
-                    listTag.forEach { tagInfo ->
-                        sendTagToFlutter(tagInfo)
+                    val newUniqueTags = ArrayList<Map<String, Any>>()
+
+                    for (info in listTag) {
+                        var rawEpc = info.epc ?: ""
+                        
+                        // 1. XỬ LÝ CHUỖI NGAY TẠI NATIVE (Giảm tải cho Dart)
+                        // Logic: Nếu bắt đầu bằng 3000 và dài >= 28 -> Cắt bỏ
+                        if (rawEpc.length >= 28 && rawEpc.startsWith("3000")) {
+                            rawEpc = rawEpc.substring(4, 28)
+                        }
+                        // Chuẩn hóa
+                        val cleanEpc = rawEpc.trim().uppercase()
+
+                        // 2. LỌC TRÙNG (Core Algorithm)
+                        // HashSet.add trả về true nếu chưa có, false nếu đã có
+                        if (cleanEpc.isNotEmpty() && scannedEpcCache.add(cleanEpc)) {
+                            // Nếu là thẻ MỚI TINH, mới đóng gói gửi đi
+                            newUniqueTags.add(mapOf(
+                                "epc" to cleanEpc,
+                                "rssi" to (info.rssi ?: "0"),
+                                "tid" to (info.tid ?: ""), // Nếu cần kiểm kê kỹ thì gửi, không thì bỏ
+                                "user" to (info.user ?: "")
+                            ))
+                        }
+                    }
+
+                    // 3. Chỉ gửi nếu có thẻ mới
+                    if (newUniqueTags.isNotEmpty()) {
+                        sendEvent(mapOf(
+                            "type" to "batch_tags", // Dùng type mới
+                            "data" to newUniqueTags
+                        ))
                     }
                 }
-                // Delay không chặn thread (non-blocking delay)
                 delay(50) 
             }
         }

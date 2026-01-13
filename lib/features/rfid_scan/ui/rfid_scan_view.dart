@@ -44,7 +44,6 @@ class RfidScanView extends StatelessWidget {
       body: Column(
         children: [
           // --- 1. PANEL ĐIỀU KHIỂN ---
-          // Dùng Consumer để chỉ rebuild vùng này khi cấu hình thay đổi
           Consumer<RfidScanController>(
             builder: (context, controller, child) {
               final isConnected = controller.connectionStatus == 'connected';
@@ -56,19 +55,15 @@ class RfidScanView extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      // Status Bar (Pin, Kết nối)
                       RfidStatusBar(
                         batteryLevel: controller.batteryLevel,
                         connectionStatus: controller.connectionStatus,
                         onConnectPressed: () {
-                          // Mở BottomSheet tìm thiết bị
                           _showDeviceListBottomSheet(context, controller);
                         },
                       ),
                       const Divider(),
 
-                      // Control Panel (Power, RSSI, Buzzer)
-                      // Disable các control này nếu chưa kết nối
                       IgnorePointer(
                         ignoring: !isConnected,
                         child: Opacity(
@@ -76,10 +71,8 @@ class RfidScanView extends StatelessWidget {
                           child: RfidControlPanel(
                             isConnected: isConnected,
                             currentPower: controller.currentPower,
-                            minRssi: controller.minRssiFilter,
+                            // [FIX] Xóa tham số minRssi và callback
                             onPowerChanged: (val) => controller.setPower(val),
-                            onRssiChanged: (val) =>
-                                controller.setRssiFilter(val),
                             onBuzzerChanged: (enable) =>
                                 controller.setHardwareBuzzer(enable),
                           ),
@@ -93,14 +86,11 @@ class RfidScanView extends StatelessWidget {
           ),
 
           // --- 2. DANH SÁCH THẺ RFID ---
-          // Selector cực quan trọng: Chỉ rebuild list khi biến tags thay đổi
           Expanded(
-            child: Selector<RfidScanController, List<dynamic>>(
-              // Lưu ý: List<dynamic> để trick generic, thực tế là List<RFIDTag>
-              selector: (_, ctrl) => ctrl.tags,
-              builder: (context, tags, _) {
-                // Ép kiểu lại cho đúng
-                return RfidTagList(tags: tags as dynamic);
+            child: Consumer<RfidScanController>(
+              builder: (context, controller, child) {
+                // Khi tags thay đổi, Consumer sẽ vẽ lại ngay lập tức
+                return RfidTagList(tags: controller.tags);
               },
             ),
           ),
