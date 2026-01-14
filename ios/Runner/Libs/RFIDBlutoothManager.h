@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "BLEModel.h"
-#import "BluetoothUtil.h"
+#import <MyRFID_ios/AppHelper.h>
+#import <MyRFID_ios/BluetoothUtil.h>
 
 
 @protocol FatScaleBluetoothManager <NSObject>
@@ -203,6 +204,6 @@
 
 - (Byte )getBye8:(Byte[])data;
 - (void)sendDataToBle:(NSData *)data;
-
+- (void)clearAllData;
 
 @end

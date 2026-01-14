@@ -7,8 +7,6 @@
 //
 
 #import "RFIDBlutoothManager.h"
-//#import "BSprogreUtil.h"
-#import "AppHelper.h"
 #import <UIKit/UIKit.h>
 
 #define kFatscaleTimeOut 5.0
@@ -275,6 +273,8 @@
 //连续盘存标签
 -(void)continuitySaveLabelWithCount:(NSString *)count
 {
+     self.isgetLab = YES;
+     
      NSData *data = [BluetoothUtil continuitySaveLabelWithCount:count];
      [self sendDataToBle:data];
 }
@@ -282,6 +282,7 @@
 //停止连续盘存标签
 -(void)StopcontinuitySaveLabel
 {
+     self.isgetLab = NO;
      NSData *data = [BluetoothUtil StopcontinuitySaveLabel];
      [self sendDataToBle:data];
 }
@@ -756,36 +757,52 @@
 {
     // NSLog(@"didUpdateNotificationStateForCharacteristic: %@",characteristic.value);
 }
+
+// Helper function: Chuyển NSData sang Hex String chuẩn xác 100%
+- (NSString *)hexStringFromData:(NSData *)data {
+    const unsigned char *dataBuffer = (const unsigned char *)[data bytes];
+    if (!dataBuffer) return [NSString string];
+    NSUInteger dataLength = [data length];
+    NSMutableString *hexString = [NSMutableString stringWithCapacity:(dataLength * 2)];
+    for (int i = 0; i < dataLength; ++i) {
+        [hexString appendFormat:@"%02x", (unsigned int)dataBuffer[i]];
+    }
+    return [NSString stringWithString:hexString];
+}
+
 //特征值更新时回调的方法
 #pragma mark - 接收数据
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSLog(@"characteristic.value==%@",characteristic.value);
-     NSString *version = [UIDevice currentDevice].systemVersion;
-     NSString *dataStr = @"";
-     if (version.floatValue >= 13.0) {
-          NSString *valueStr=[NSString stringWithFormat:@"%@",characteristic.value];
-          if ([valueStr containsString:@"bytes = 0x"]) {
-               NSRange range = [valueStr rangeOfString:@"bytes = 0x"];
-               NSString *valueStrr=[valueStr substringFromIndex:range.location + range.length];
-//               NSArray *aa=[valueStrr componentsSeparatedByString:@" "];
-//               NSMutableString *bb=[[NSMutableString alloc]init];
-//               for (NSString *str in aa) {
-//                    [bb appendString:str];
-//               }
-               dataStr =[NSString stringWithFormat:@"%@",[valueStrr substringToIndex:valueStrr.length - 1]];
-          }
-          
-     } else {
-          NSString *valueStr=[NSString stringWithFormat:@"%@",characteristic.value];
-          NSString *valueStrr=[valueStr substringWithRange:NSMakeRange(1, valueStr.length-2)];
-          NSArray *aa=[valueStrr componentsSeparatedByString:@" "];
-          NSMutableString *bb=[[NSMutableString alloc]init];
-          for (NSString *str in aa) {
-               [bb appendString:str];
-          }
-          dataStr =[NSString stringWithFormat:@"%@",bb];
-     }
+//     NSString *version = [UIDevice currentDevice].systemVersion;
+//     NSString *dataStr = @"";
+//     if (version.floatValue >= 13.0) {
+//          NSString *valueStr=[NSString stringWithFormat:@"%@",characteristic.value];
+//          if ([valueStr containsString:@"bytes = 0x"]) {
+//               NSRange range = [valueStr rangeOfString:@"bytes = 0x"];
+//               NSString *valueStrr=[valueStr substringFromIndex:range.location + range.length];
+////               NSArray *aa=[valueStrr componentsSeparatedByString:@" "];
+////               NSMutableString *bb=[[NSMutableString alloc]init];
+////               for (NSString *str in aa) {
+////                    [bb appendString:str];
+////               }
+//               dataStr =[NSString stringWithFormat:@"%@",[valueStrr substringToIndex:valueStrr.length - 1]];
+//          }
+//          
+//     } else {
+//          NSString *valueStr=[NSString stringWithFormat:@"%@",characteristic.value];
+//          NSString *valueStrr=[valueStr substringWithRange:NSMakeRange(1, valueStr.length-2)];
+//          NSArray *aa=[valueStrr componentsSeparatedByString:@" "];
+//          NSMutableString *bb=[[NSMutableString alloc]init];
+//          for (NSString *str in aa) {
+//               [bb appendString:str];
+//          }
+//          dataStr =[NSString stringWithFormat:@"%@",bb];
+//     }
+    
+    NSString *dataStr = [self hexStringFromData:characteristic.value];
+    NSLog(@"Hex Data Clean: %@", dataStr);
     
      NSString *typeStr;
      if (dataStr.length>10) {
@@ -1540,6 +1557,13 @@
 
 - (CBCharacteristic *)myCharacteristic
 {
+    // [Sửa đoạn này] Code cũ dùng [CBCharacteristic new] bị cấm.
+    // Nếu chưa tìm thấy characteristic thì trả về nil, không tự tạo.
+    /*
+    if (_myCharacteristic == nil) {
+        _myCharacteristic = [CBCharacteristic new];
+    }
+    */
     return _myCharacteristic;
 }
 
@@ -1557,6 +1581,27 @@
             break;
     }
     return descStr;
+}
+
+-(void)clearAllData {
+    NSLog(@"🔵 iOS Native: Clearing all internal SDK buffers...");
+    
+    // Xóa dữ liệu EPC
+    if (self.dataSource) [self.dataSource removeAllObjects];
+    if (self.countArr) [self.countArr removeAllObjects];
+    
+    // Xóa dữ liệu TID (nếu có)
+    if (self.dataSource1) [self.dataSource1 removeAllObjects];
+    if (self.countArr1) [self.countArr1 removeAllObjects];
+    
+    // Xóa dữ liệu User/RSSI
+    if (self.dataSource2) [self.dataSource2 removeAllObjects];
+    if (self.countArr2) [self.countArr2 removeAllObjects];
+    
+    // Xóa các biến tạm string nếu cần (để chắc ăn)
+    if (self.tagStr) [self.tagStr setString:@""];
+    
+    self.allCount = 0;
 }
 
 - (void)dealloc

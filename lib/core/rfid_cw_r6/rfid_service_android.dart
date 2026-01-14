@@ -119,4 +119,16 @@ class RfidServiceAndroid implements IRfidService {
   Future<void> clearData() async {
     await _methodChannel.invokeMethod('clearData');
   }
+
+  @override
+  Future<void> startDiscovery() {
+    // TODO: implement startDiscovery
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> stopDiscovery() {
+    // TODO: implement stopDiscovery
+    throw UnimplementedError();
+  }
 }

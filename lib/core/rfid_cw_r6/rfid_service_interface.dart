@@ -7,6 +7,8 @@ abstract class IRfidService {
 
   Future<bool> connect(String deviceId);
   Future<void> disconnect();
+  Future<void> startDiscovery();
+  Future<void> stopDiscovery();
   Future<void> startScan();
   Future<void> stopScan();
   Future<bool> setPower(int power);

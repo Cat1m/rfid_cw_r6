@@ -49,3 +49,20 @@ class RfidPowerEvent extends RfidEvent {
 class RfidTriggerEvent extends RfidEvent {
   RfidTriggerEvent();
 }
+
+class RfidDeviceDiscoveredEvent extends RfidEvent {
+  final RfidBluetoothDevice device;
+  RfidDeviceDiscoveredEvent(this.device);
+}
+
+class RfidBluetoothDevice {
+  final String id; // iOS: UUID, Android: MAC
+  final String name; // Tên thiết bị (VD: UR-54BF)
+  final int rssi; // Cường độ tín hiệu
+
+  RfidBluetoothDevice({
+    required this.id,
+    required this.name,
+    required this.rssi,
+  });
+}

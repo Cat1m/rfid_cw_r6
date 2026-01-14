@@ -57,6 +57,17 @@ class RfidServiceIOS implements IRfidService {
           case 'trigger':
             return RfidTriggerEvent();
 
+          case 'device_found':
+            final data = map['data'];
+            // Giả sử data là Map {name: "...", address: "...", rssi: "..."}
+            return RfidDeviceDiscoveredEvent(
+              RfidBluetoothDevice(
+                id: data['address'] ?? 'Unknown',
+                name: data['name'] ?? 'Unknown Device',
+                rssi: int.tryParse(data['rssi'].toString()) ?? 0,
+              ),
+            );
+
           default:
             return RfidErrorEvent('Unknown iOS event: $type');
         }
@@ -67,12 +78,16 @@ class RfidServiceIOS implements IRfidService {
   }
 
   RFIDTag _mapNativeTagToModel(Map<dynamic, dynamic> map) {
-    // RSSI từ iOS gửi lên vẫn là String, cần parse
+    // RSSI từ iOS gửi lên là String, parse an toàn
     int rssi = int.tryParse(map['rssi']?.toString() ?? '') ?? -100;
 
+    // [FIX] Lấy EPC trực tiếp, KHÔNG xử lý logic cắt chuỗi ở đây nữa
+    // Vì Native (Swift) đã chịu trách nhiệm làm sạch rồi.
+    String epc = map['epc'].toString();
+
     return RFIDTag(
-      epc: map['epc'], // Đã clean ở Swift
-      rssi: rssi, // Đã parse int
+      epc: epc,
+      rssi: rssi,
       count: 1,
       tid: map['tid'],
       userData: map['user'],
@@ -81,39 +96,24 @@ class RfidServiceIOS implements IRfidService {
 
   // --- LOGIC XỬ LÝ TAG (Copy chuẩn từ Android qua) ---
   RFIDTag _processTagData(Map<dynamic, dynamic> map) {
-    String rawEpc = map['epc']?.toString() ?? 'Unknown';
-    String rawRssi = map['rssi']?.toString() ?? '-100';
-    log(rawEpc);
-
-    // 1. Logic cắt chuỗi 3000...CRC
-    if (rawEpc.length >= 28 && rawEpc.startsWith("3000")) {
-      rawEpc = rawEpc.substring(4, 28);
-    }
-
-    // 2. Chuẩn hóa EPC
-    final cleanEpc = rawEpc.trim().toUpperCase();
-
-    // 3. Parse RSSI sang int (FIX: Sửa ở đây)
-    // iOS trả về RSSI dạng String (ví dụ "-65"), cần parse ra int (-65)
-    final int rssi = int.tryParse(rawRssi) ?? -100;
-
-    // 4. Map vào Model (Giờ rssi đã là int, khớp với Model Equatable)
-    return RFIDTag(
-      epc: cleanEpc,
-      rssi: rssi, // Truyền int vào
-      count: 1, // iOS trả từng thẻ nên count = 1
-    );
+    return _mapNativeTagToModel(map);
   }
 
   // --- METHODS (Standardized Keys) ---
 
   @override
   Future<bool> connect(String deviceId) async {
-    // Dùng key 'mac' hoặc 'uuid' thống nhất để bên Native dễ hiểu
-    final result = await _methodChannel.invokeMethod('connect', {
-      'mac': deviceId, // iOS Native sẽ nhận key này là UUID string
-    });
-    return result ?? false;
+    // SỬA LẠI TÊN KEY: 'mac' -> 'address'
+    log("Connecting to iOS Device UUID: $deviceId");
+    try {
+      final result = await _methodChannel.invokeMethod('connect', {
+        'address': deviceId,
+      });
+      return result == true;
+    } on PlatformException catch (e) {
+      log("iOS Connect Error: ${e.message}");
+      return false;
+    }
   }
 
   @override
@@ -168,5 +168,15 @@ class RfidServiceIOS implements IRfidService {
   @override
   Future<void> clearData() async {
     await _methodChannel.invokeMethod('clearData');
+  }
+
+  @override
+  Future<void> startDiscovery() async {
+    await _methodChannel.invokeMethod('startDiscovery');
+  }
+
+  @override
+  Future<void> stopDiscovery() async {
+    await _methodChannel.invokeMethod('stopDiscovery');
   }
 }

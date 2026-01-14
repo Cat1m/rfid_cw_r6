@@ -7,14 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		052B15232F15FC100016AC07 /* BluetoothUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B15222F15FC100016AC07 /* BluetoothUtil.m */; };
-		052B15262F15FC370016AC07 /* AppHelper 2.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B15252F15FC370016AC07 /* AppHelper 2.m */; };
-		05A43A742F15E3AD007EF0AE /* RFIDBlutoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A712F15E3AD007EF0AE /* RFIDBlutoothManager.m */; };
-		05A43A752F15E3AD007EF0AE /* BLEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A6E2F15E3AD007EF0AE /* BLEModel.m */; };
-		05A43A772F15E71B007EF0AE /* RFIDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A762F15E719007EF0AE /* RFIDHandler.swift */; };
-		05A43A792F15EB54007EF0AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A782F15EB53007EF0AE /* Constants.swift */; };
-		05A43A7B2F15EB5C007EF0AE /* RFIDFlutterPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A43A7A2F15EB5B007EF0AE /* RFIDFlutterPlugin.swift */; };
-		05A43BB02F15F7D6007EF0AE /* libRFID_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A43BAF2F15F7D6007EF0AE /* libRFID_iOS.a */; };
+		051D41A52F171FA800CA19D5 /* RFIDBlutoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 051D41A32F171FA800CA19D5 /* RFIDBlutoothManager.m */; };
+		051D41A62F171FA800CA19D5 /* BLEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 051D41A02F171FA800CA19D5 /* BLEModel.m */; };
+		051D41A82F171FCD00CA19D5 /* MyRFID_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051D41A12F171FA800CA19D5 /* MyRFID_ios.framework */; };
+		051D41A92F171FCD00CA19D5 /* MyRFID_ios.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 051D41A12F171FA800CA19D5 /* MyRFID_ios.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		2DD7DD807DAABDF6AB2C6FE8 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81276A916EBBA39DE87FB1DC /* Pods_Runner.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
@@ -86,19 +82,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		051D41AA2F171FCD00CA19D5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				051D41A92F171FCD00CA19D5 /* MyRFID_ios.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		052B151E2F15FBF20016AC07 /* AppHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
-		052B15222F15FC100016AC07 /* BluetoothUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BluetoothUtil.m; sourceTree = "<group>"; };
-		052B15242F15FC290016AC07 /* BluetoothUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BluetoothUtil.h; sourceTree = "<group>"; };
-		052B15252F15FC370016AC07 /* AppHelper 2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppHelper 2.m"; sourceTree = "<group>"; };
-		05A43A6D2F15E3AD007EF0AE /* BLEModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEModel.h; sourceTree = "<group>"; };
-		05A43A6E2F15E3AD007EF0AE /* BLEModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEModel.m; sourceTree = "<group>"; };
-		05A43A6F2F15E3AD007EF0AE /* MyRFID_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyRFID_ios.framework; sourceTree = "<group>"; };
-		05A43A702F15E3AD007EF0AE /* RFIDBlutoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFIDBlutoothManager.h; sourceTree = "<group>"; };
-		05A43A712F15E3AD007EF0AE /* RFIDBlutoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFIDBlutoothManager.m; sourceTree = "<group>"; };
-		05A43A762F15E719007EF0AE /* RFIDHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFIDHandler.swift; sourceTree = "<group>"; };
-		05A43A782F15EB53007EF0AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		05A43A7A2F15EB5B007EF0AE /* RFIDFlutterPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFIDFlutterPlugin.swift; sourceTree = "<group>"; };
+		051D419F2F171FA800CA19D5 /* BLEModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEModel.h; sourceTree = "<group>"; };
+		051D41A02F171FA800CA19D5 /* BLEModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLEModel.m; sourceTree = "<group>"; };
+		051D41A12F171FA800CA19D5 /* MyRFID_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyRFID_ios.framework; sourceTree = "<group>"; };
+		051D41A22F171FA800CA19D5 /* RFIDBlutoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFIDBlutoothManager.h; sourceTree = "<group>"; };
+		051D41A32F171FA800CA19D5 /* RFIDBlutoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFIDBlutoothManager.m; sourceTree = "<group>"; };
 		05A43A7E2F15F417007EF0AE /* IQBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
 		05A43A7F2F15F417007EF0AE /* IQKeyboardManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
 		05A43A802F15F417007EF0AE /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
@@ -364,6 +367,20 @@
 		DFC905422AB58C8E7324F0D4 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		051D41D72F172A3900CA19D5 /* rfid */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = rfid;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		56677E86323740DD1ECD95AD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -377,7 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05A43BB02F15F7D6007EF0AE /* libRFID_iOS.a in Frameworks */,
+				051D41A82F171FCD00CA19D5 /* MyRFID_ios.framework in Frameworks */,
 				78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */,
 				2DD7DD807DAABDF6AB2C6FE8 /* Pods_Runner.framework in Frameworks */,
 			);
@@ -399,20 +416,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		05A43A722F15E3AD007EF0AE /* RFID_IOS_SDK */ = {
+		051D41A42F171FA800CA19D5 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				05A43A6D2F15E3AD007EF0AE /* BLEModel.h */,
-				05A43A6E2F15E3AD007EF0AE /* BLEModel.m */,
-				05A43A6F2F15E3AD007EF0AE /* MyRFID_ios.framework */,
-				05A43A702F15E3AD007EF0AE /* RFIDBlutoothManager.h */,
-				05A43A712F15E3AD007EF0AE /* RFIDBlutoothManager.m */,
-				052B151E2F15FBF20016AC07 /* AppHelper.h */,
-				052B15222F15FC100016AC07 /* BluetoothUtil.m */,
-				052B15242F15FC290016AC07 /* BluetoothUtil.h */,
-				052B15252F15FC370016AC07 /* AppHelper 2.m */,
+				051D419F2F171FA800CA19D5 /* BLEModel.h */,
+				051D41A02F171FA800CA19D5 /* BLEModel.m */,
+				051D41A12F171FA800CA19D5 /* MyRFID_ios.framework */,
+				051D41A22F171FA800CA19D5 /* RFIDBlutoothManager.h */,
+				051D41A32F171FA800CA19D5 /* RFIDBlutoothManager.m */,
 			);
-			path = RFID_IOS_SDK;
+			path = Libs;
 			sourceTree = "<group>";
 		};
 		05A43A8E2F15F417007EF0AE /* IQKeyboardManager */ = {
@@ -1016,9 +1029,8 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
-				05A43A7A2F15EB5B007EF0AE /* RFIDFlutterPlugin.swift */,
-				05A43A782F15EB53007EF0AE /* Constants.swift */,
-				05A43A762F15E719007EF0AE /* RFIDHandler.swift */,
+				051D41D72F172A3900CA19D5 /* rfid */,
+				051D41A42F171FA800CA19D5 /* Libs */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -1027,7 +1039,6 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
-				05A43A722F15E3AD007EF0AE /* RFID_IOS_SDK */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -1062,6 +1073,7 @@
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
+				051D41AA2F171FCD00CA19D5 /* Embed Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				7C76B9F455EE9F5BB0604436 /* [CP] Copy Pods Resources */,
@@ -1069,6 +1081,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				051D41D72F172A3900CA19D5 /* rfid */,
 			);
 			name = Runner;
 			packageProductDependencies = (
@@ -1273,7 +1288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		E1510BF7FADA7CF5A2C1B8CD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1312,15 +1327,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05A43A772F15E71B007EF0AE /* RFIDHandler.swift in Sources */,
-				052B15262F15FC370016AC07 /* AppHelper 2.m in Sources */,
-				05A43A742F15E3AD007EF0AE /* RFIDBlutoothManager.m in Sources */,
-				05A43A752F15E3AD007EF0AE /* BLEModel.m in Sources */,
-				05A43A7B2F15EB5C007EF0AE /* RFIDFlutterPlugin.swift in Sources */,
-				052B15232F15FC100016AC07 /* BluetoothUtil.m in Sources */,
+				051D41A52F171FA800CA19D5 /* RFIDBlutoothManager.m in Sources */,
+				051D41A62F171FA800CA19D5 /* BLEModel.m in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
-				05A43A792F15EB54007EF0AE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1446,6 +1456,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK",
 					"$(SRCROOT)/Runner/RFID_IOS_SDK",
+					"$(PROJECT_DIR)/Runner/Libs",
+					"$(PROJECT_DIR)/Runner",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1644,12 +1656,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK",
 					"$(SRCROOT)/Runner/RFID_IOS_SDK",
+					"$(PROJECT_DIR)/Runner/Libs",
+					"$(PROJECT_DIR)/Runner",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple.framework/Headers\"",
-					"$(SRCROOT)/Runner/RFID_IOS_SDK/**",
-					"$(SRCROOT)/Runner/RFID_IOS_SDK/MyRFID_ios.framework/Headers",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1682,6 +1694,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Runner/RFID_IOS_SDK",
 					"$(SRCROOT)/Runner/RFID_IOS_SDK",
+					"$(PROJECT_DIR)/Runner/Libs",
+					"$(PROJECT_DIR)/Runner",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

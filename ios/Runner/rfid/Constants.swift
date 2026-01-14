@@ -1,10 +1,9 @@
-// ios/Runner/Constants.swift
-
 import Foundation
 
 struct Constants {
     static let CHANNEL_NAMESPACE = "com.chien.libs.rfid_r6"
     
+    // Channel Names
     static let CHANNEL_COMMAND = "\(CHANNEL_NAMESPACE)/methods"
     static let CHANNEL_EVENT = "\(CHANNEL_NAMESPACE)/events"
     
@@ -18,10 +17,7 @@ struct Constants {
     static let CMD_GET_BATTERY = "getBattery"
     static let CMD_SET_CW = "setCW"
     static let CMD_SET_BUZZER = "setBuzzer"
-    
     static let CMD_START_DISCOVERY = "startDiscovery"
     static let CMD_STOP_DISCOVERY = "stopDiscovery"
-    
-    // [MỚI] Lệnh xóa dữ liệu cache
     static let CMD_CLEAR_DATA = "clearData"
 }

@@ -39,6 +39,12 @@ class RFIDService implements IRfidService {
   Future<void> disconnect() => _impl.disconnect();
 
   @override
+  Future<void> startDiscovery() => _impl.startDiscovery();
+
+  @override
+  Future<void> stopDiscovery() => _impl.stopDiscovery();
+
+  @override
   Future<void> startScan() => _impl.startScan();
 
   @override
