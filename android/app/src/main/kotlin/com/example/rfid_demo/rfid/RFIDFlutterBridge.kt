@@ -70,6 +70,9 @@ class RFIDFlutterBridge(
                 result.success(true)
             }
 
+            Constants.CMD_START_DISCOVERY -> result.success(rfidHandler.startDiscovery())
+            Constants.CMD_STOP_DISCOVERY -> result.success(rfidHandler.stopDiscovery())
+
             else -> result.notImplemented()
         }
     }

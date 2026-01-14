@@ -38,6 +38,14 @@ class RfidServiceAndroid implements IRfidService {
           return RfidScanningStatusChanged(map['scanning'] as bool);
         case 'connection_status':
           return RfidConnectionStatusChanged(map['status'] as String);
+        case 'device_discovered':
+          return RfidDeviceDiscoveredEvent(
+            RfidBluetoothDevice(
+              id: map['id'] ?? '',
+              name: map['name'] ?? 'Unknown',
+              rssi: map['rssi'] ?? 0,
+            ),
+          );
         default:
           return RfidErrorEvent('Unknown event type Android: $type');
       }
@@ -121,14 +129,13 @@ class RfidServiceAndroid implements IRfidService {
   }
 
   @override
-  Future<void> startDiscovery() {
-    // TODO: implement startDiscovery
-    throw UnimplementedError();
+  Future<void> startDiscovery() async {
+    // Gọi xuống Native để dùng BluetoothLeScanner
+    await _methodChannel.invokeMethod('startDiscovery');
   }
 
   @override
-  Future<void> stopDiscovery() {
-    // TODO: implement stopDiscovery
-    throw UnimplementedError();
+  Future<void> stopDiscovery() async {
+    await _methodChannel.invokeMethod('stopDiscovery');
   }
 }

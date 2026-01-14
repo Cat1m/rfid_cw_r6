@@ -1,5 +1,10 @@
 package com.example.rfid_demo.rfid
 
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothManager
+import android.bluetooth.le.ScanCallback
+import android.bluetooth.le.ScanResult
+import android.bluetooth.le.ScanSettings
 import android.content.Context
 import android.util.Log
 import com.rscja.deviceapi.RFIDWithUHFBLE
@@ -7,6 +12,8 @@ import com.rscja.deviceapi.entity.UHFTAGInfo
 import com.rscja.deviceapi.interfaces.ConnectionStatus
 import com.rscja.deviceapi.interfaces.ConnectionStatusCallback
 import kotlinx.coroutines.* // Cần thêm thư viện coroutines vào build.gradle nếu chưa có
+
+
 
 // Interface giữ nguyên
 interface RFIDListener {
@@ -26,6 +33,12 @@ class RFIDHandler(private val context: Context, private val listener: RFIDListen
     //Cache lưu các EPC đã quét để lọc trùng tuyệt đối
     private val scannedEpcCache = HashSet<String>()
 
+    private val bluetoothAdapter: BluetoothAdapter? by lazy {
+        val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        bluetoothManager.adapter
+    }
+    private var isDiscovering = false
+
     init {
         try {
             rfidSDK = RFIDWithUHFBLE.getInstance()
@@ -35,7 +48,70 @@ class RFIDHandler(private val context: Context, private val listener: RFIDListen
         }
     }
 
-    // [MỚI] Hàm dọn dẹp cache (Gọi khi bấm nút Xóa trên UI)
+    // Callback nhận kết quả quét từ Android System
+    private val scanCallback = object : ScanCallback() {
+        override fun onScanResult(callbackType: Int, result: ScanResult) {
+            super.onScanResult(callbackType, result)
+            // Chỉ lấy thiết bị có tên để tránh rác (tuỳ chỉnh logic filter tại đây nếu cần)
+            val device = result.device
+            val deviceName = device.name ?: "Unknown"
+            val deviceAddress = device.address
+            val rssi = result.rssi
+
+            // Gửi dữ liệu về Flutter ngay lập tức
+            sendEvent(mapOf(
+                "type" to "device_discovered",
+                "name" to deviceName,
+                "id" to deviceAddress, // Android dùng MAC làm ID
+                "rssi" to rssi
+            ))
+        }
+
+        override fun onScanFailed(errorCode: Int) {
+            super.onScanFailed(errorCode)
+            Log.e("RFIDHandler", "Scan failed with error: $errorCode")
+        }
+    }
+
+    // Hàm bắt đầu quét thiết bị (Discovery)
+    fun startDiscovery(): Boolean {
+        if (bluetoothAdapter?.isEnabled == false) return false
+        if (isDiscovering) return true
+
+        try {
+            val scanner = bluetoothAdapter?.bluetoothLeScanner
+            // Cấu hình scan Low Latency để tìm nhanh
+            val settings = ScanSettings.Builder()
+                .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
+                .build()
+            
+            scanner?.startScan(null, settings, scanCallback)
+            isDiscovering = true
+            return true
+        } catch (e: SecurityException) {
+            // Lưu ý: Quyền BLUETOOTH_SCAN phải được xin ở Flutter (permission_handler) trước khi gọi hàm này
+            Log.e("RFIDHandler", "Permission Error: ${e.message}")
+            return false
+        } catch (e: Exception) {
+            Log.e("RFIDHandler", "Start Discovery Error: ${e.message}")
+            return false
+        }
+    }
+
+    // Hàm dừng quét thiết bị
+    fun stopDiscovery(): Boolean {
+        if (!isDiscovering) return true
+        try {
+            val scanner = bluetoothAdapter?.bluetoothLeScanner
+            scanner?.stopScan(scanCallback)
+            isDiscovering = false
+            return true
+        } catch (e: Exception) {
+            return false
+        }
+    }
+
+    // Hàm dọn dẹp cache (Gọi khi bấm nút Xóa trên UI)
     fun clearCache() {
         scannedEpcCache.clear()
     }
@@ -162,6 +238,7 @@ class RFIDHandler(private val context: Context, private val listener: RFIDListen
     }
 
     fun connect(macAddress: String): Boolean {
+        stopDiscovery() // Luôn dừng quét trước khi connect để ổn định
         return try {
             rfidSDK?.connect(macAddress, btStatusCallback)
             true
@@ -199,9 +276,10 @@ class RFIDHandler(private val context: Context, private val listener: RFIDListen
     }
 
     fun free() {
+        stopDiscovery()
         stopScan()
         rfidSDK?.free()
-        scope.cancel() // Hủy toàn bộ coroutine khi thoát app để tránh leak memory
+        scope.cancel() 
     }
 
     fun setupTriggerListener() {

@@ -19,4 +19,6 @@ object Constants {
     const val CMD_SET_CW = "setCW"
     const val CMD_SET_BUZZER = "setBuzzer"
     const val CMD_CLEAR_DATA = "clearData"
+    const val CMD_START_DISCOVERY = "startDiscovery"
+    const val CMD_STOP_DISCOVERY = "stopDiscovery"
 }
